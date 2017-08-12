@@ -1,0 +1,105 @@
+<template>
+    <div class="enquiry-modal">
+        <div class="modal fade" id="songEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h1>Editer la piste</h1>
+
+
+                        <form class="form mt-20" @submit.prevent="checkBeforeSubmit()">
+                            <div class="form-group">
+                                <input type="text" name="title"
+                                    required
+                                    v-model="song.title"
+                                    placeholder="Titre de la piste"
+                                    class="form-control input-lg">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="link"
+                                    v-model="song.link"
+                                    placeholder="Lien de la piste"
+                                    id="link"
+                                    class="form-control input-lg">
+                            </div>
+
+
+
+
+
+                            <div class="text-left">
+                                <a href="/backend/filemanager/dialog.php?type=2&field_id=link" class="iframe-btn btn-dark btn btn-lg">
+                                    <i class='flaticon-folder'></i> Fichiers
+                                </a>
+
+                                <button type="submit" class="btn btn-lg btn-green pull-right" :disabled="isLoading">
+                                    <i class="flaticon-save"></i>
+                                    <span v-show="!isLoading">Sauvegarder</span>
+                                    <span v-show="isLoading">Sauvegarde en cours</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+export default {
+    name: 'admin-songs-edit',
+    props: ['song'],
+
+    data () {
+        return {
+            isLoading: false
+        }
+    },
+
+    methods: {
+        updateSong () {
+            this.isLoading = true
+            axios.put('/api/admin/songs/', this.song)
+            .then((res) => {
+                this.isLoading = false
+                window.$('#songEditModal').modal('hide')
+            })
+        },
+
+        checkBeforeSubmit () {
+            if (this.song.link !== undefined && this.song.link !== null && this.song.link !== '') {
+                this.updateSong()
+            }
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+
+.enquiry-modal {
+    h2 {
+        text-align: center;
+        margin: 0;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-weight: 400;
+        font-size: 18px;
+        margin-top:20px;
+        text-transform: uppercase;
+        font-family: 'Open Sans', 'Maven Pro', Calibri, sans-serif;
+    }
+
+    textarea {
+        resize: none;
+    }
+}
+
+
+</style>
