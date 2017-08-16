@@ -15,16 +15,18 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('last_updated_by');
             $table->string('title');
             $table->string('slug');
             $table->string('flyer')->nullable();
             $table->string('type')->nullable();
             $table->string('country')->nullable();
             $table->string('address')->nullable();
-            $table->string('organiser')->nullable();
+            $table->string('organizer')->nullable();
             $table->string('phone')->nullable();
             $table->string('phone2')->nullable();
             $table->text('description')->nullable();
+            $table->enum('status', ['published', 'unpublished'])->default('unpublished');
             $table->timestamps();
         });
     }

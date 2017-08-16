@@ -25,9 +25,9 @@ class UserController extends Controller
 
         $keywords = $request->keywords;
         $users = User::when($keywords, function($query) use ($keywords) {
-            return $query->where('firstname', 'rlike', $keywords)
-            ->orWhere('lastname', 'rlike', $keywords)
-            ->orWhere('username', 'rlike', $keywords);
+            return $query->where('firstname', 'like', '%'.$keywords.'%')
+            ->orWhere('lastname', 'like', '%'.$keywords.'%')
+            ->orWhere('username', 'like', '%'.$keywords.'%');
         })
         ->when($role, function($query) use ($role) {
             return $query->where('role_id', $role->id);

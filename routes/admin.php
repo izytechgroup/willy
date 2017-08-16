@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_auth', 'admin']], fun
     Route::resource('users', 'views\admin\UserController');
     Route::resource('pages', 'views\admin\PageController');
     Route::resource('posts', 'views\admin\PostController');
+    Route::resource('events', 'views\admin\EventController');
     Route::resource('songs', 'views\admin\SongController');
     Route::resource('videos', 'views\admin\VideoController');
 

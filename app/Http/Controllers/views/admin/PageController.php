@@ -35,7 +35,7 @@ class PageController extends Controller
             $keywords = $request->keywords;
 
             $pages = Page::when($keywords, function($query) use ($keywords) {
-                return $query->where('title', 'rlike', $keywords);
+                return $query->where('title', 'like', '%'.$keywords.'%');
             })
             ->when($status, function($query) use ($status) {
                 return $query->where('status', $status);

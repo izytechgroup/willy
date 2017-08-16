@@ -27,6 +27,20 @@
             </a>
         </li>
 
+        <li class="{{ Request::is('admin/events*') ? 'active' : '' }}">
+            <a href="{{ route('events.index' )}}">
+                <i class="flaticon-event"></i>
+                Events
+            </a>
+        </li>
+
+        <li class="{{ Request::is('admin/posts*') ? 'active' : '' }}">
+            <a href="{{ route('posts.index' )}}">
+                <i class="flaticon-post"></i>
+                Articles
+            </a>
+        </li>
+
         <li class="{{ Request::is('admin/pages*') ? 'active' : '' }}">
             <a href="{{ route('pages.index' )}}">
                 <i class="flaticon-page"></i>
