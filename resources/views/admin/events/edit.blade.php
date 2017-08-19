@@ -145,8 +145,9 @@
 
 
 @section('js')
-<script type="text/javascript" src="/backend/fancybox/jquery.fancybox.js"></script>
-<script type="text/javascript" src="/backend/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="/backend/js/scripts.min.js"></script>
+    <script type="text/javascript" src="/backend/fancybox/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="/backend/tinymce/tinymce.min.js"></script>
 <script>
 $(document).ready(function() {
     $('.tags').tokenfield();
