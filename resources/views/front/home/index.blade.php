@@ -183,7 +183,7 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/h7iO7xIPMIA/hqdefault.jpg" class="img-responsive">
+                                                <img src="https://img.youtube.com/vi/h7iO7xIPMIA/mqdefault.jpg" class="img-responsive">
                                                 <div class="title">
                                                     WILLY Mix MAKOSSA AOUT 2017 DORA DECA , PETIT PAYS ,SERGEO POLO,LONGUE LONGUE
                                                 </div>
@@ -194,7 +194,7 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/3Ahx-hzez1w/hqdefault.jpg" class="img-responsive">
+                                                <img src="https://img.youtube.com/vi/3Ahx-hzez1w/mqdefault.jpg" class="img-responsive">
                                                 <div class="title">
                                                     MIX VIDÉO BENSKIN AOUT 2017 " GERARD BEN PASSY LA NOBLESSE WILLY Mix NAT LA BOMBE DJ MARTIAL
                                                 </div>
@@ -205,7 +205,7 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/leNooW4ZpqY/hqdefault.jpg" class="img-responsive">
+                                                <img src="https://img.youtube.com/vi/leNooW4ZpqY/mqdefault.jpg" class="img-responsive">
                                                 <div class="title">
                                                     HIT CAMER VIDEO MIX SEPTEMBRE 2017 BY WILLY Mix
                                                 </div>
@@ -216,7 +216,7 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/Ykh2Bw2I7KE/hqdefault.jpg" class="img-responsive">
+                                                <img src="https://img.youtube.com/vi/Ykh2Bw2I7KE/mqdefault.jpg" class="img-responsive">
                                                 <div class="title">
                                                     WILLY MIX COUPÉ DÉCALÉ VOL 213
                                                 </div>
