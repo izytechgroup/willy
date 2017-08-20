@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'views\front\HomeController@index')->name('home');
 Route::get('logout', 'views\front\AuthController@logout')->name('logout');

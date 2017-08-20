@@ -33,3 +33,22 @@ gulp.task('admin-js', function() {
 gulp.task('admin', ['admin-js', 'admin-sass'], function() {
     gulp.watch('resources/assets/sass/**/*.scss', ['admin-sass']);
 });
+
+
+
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+////////////////////// FRONT //////////////////////////
+gulp.task('front-sass', function() {
+    return gulp.src('resources/assets/sass/app.scss')
+    .pipe(sass())
+    .pipe(concat('app.min.css'))
+    .pipe(strip())
+    .pipe(cssnano())
+    .pipe(gulp.dest('public/assets/css'))
+});
+
+gulp.task('front', ['front-sass'], function() {
+    gulp.watch('resources/assets/sass/**/*.scss', ['front-sass']);
+});
