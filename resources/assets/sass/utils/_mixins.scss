@@ -159,3 +159,19 @@ $min: 25;
         transform: scaleX(-1);
         filter: FlipH;
 }
+
+@mixin skewX($args...) {
+    -webkit-transform: skewX( $args );
+    -moz-transform: skewX( $args );
+    -ms-transform: skewX( $args );
+    -o-transform: skewX( $args );
+    transform: skewX( $args );
+}
+
+@mixin skewY($args...) {
+    -webkit-transform: skewY( $args );
+    -moz-transform: skewY( $args );
+    -ms-transform: skewY( $args );
+    -o-transform: skewY( $args );
+    transform: skewY( $args );
+}

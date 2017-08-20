@@ -154,6 +154,13 @@
                         </div>
                     </div>
 
+                    <div class="more">
+                        <a href="/videos">
+                            <i class="flaticon-minus"></i>
+                            Toute la musique
+                        </a>
+                    </div>
+
                 </div>
             </section>
 
@@ -161,6 +168,7 @@
 
             {{-- Section video  --}}
             <section class="brand-new-videos">
+                {{-- <div class="overlay"></div> --}}
                 <div class="container">
                     <h2>#New Videos</h2>
 
@@ -168,9 +176,13 @@
                         <div class="col-sm-6">
                             <a href="">
                                 <div class="main-video">
-                                    <img src="https://img.youtube.com/vi/sY5zP9eKPWk/hqdefault.jpg">
+                                    <div class="play">
+                                        <img src="/assets/img/play.png" alt="">
+                                    </div>
+                                    <img src="https://img.youtube.com/vi/sY5zP9eKPWk/mqdefault.jpg">
+
                                     <div class="title">
-                                        COLLER LA PETITE AWILO BANA C4 ARAFAT WILLY MIX SERGE BEYNAUD DEBORDEAU SHADO CHRIST JOSÉ BABAH
+                                        {{ strtolower('COLLER LA PETITE AWILO BANA C4 ARAFAT WILLY MIX SERGE BEYNAUD DEBORDEAU SHADO CHRIST JOSÉ BABAH') }}
                                     </div>
                                 </div>
                             </a>
@@ -183,9 +195,14 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
+                                                <div class="play">
+                                                    <img src="/assets/img/play.png" alt="">
+                                                </div>
+
                                                 <img src="https://img.youtube.com/vi/h7iO7xIPMIA/mqdefault.jpg" class="img-responsive">
+
                                                 <div class="title">
-                                                    WILLY Mix MAKOSSA AOUT 2017 DORA DECA , PETIT PAYS ,SERGEO POLO,LONGUE LONGUE
+                                                    {{ strtolower('WILLY Mix MAKOSSA AOUT 2017 DORA DECA , PETIT PAYS ,SERGEO POLO,LONGUE LONGUE') }}
                                                 </div>
                                             </div>
                                         </a>
@@ -194,9 +211,15 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
+                                                <div class="play">
+                                                    <img src="/assets/img/play.png" alt="">
+                                                </div>
+
                                                 <img src="https://img.youtube.com/vi/3Ahx-hzez1w/mqdefault.jpg" class="img-responsive">
+
+
                                                 <div class="title">
-                                                    MIX VIDÉO BENSKIN AOUT 2017 " GERARD BEN PASSY LA NOBLESSE WILLY Mix NAT LA BOMBE DJ MARTIAL
+                                                    {{ strtolower('MIX VIDEO BENSKIN AOUT 2017 " GERARD BEN PASSY LA NOBLESSE WILLY Mix NAT LA BOMBE DJ MARTIAL') }}
                                                 </div>
                                             </div>
                                         </a>
@@ -225,6 +248,34 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="more">
+                        <a href="/videos">
+                            <i class="flaticon-minus"></i>
+                            Toutes les vidéos
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+
+            {{-- Section events  --}}
+            <section class="events">
+                <div class="container">
+                    <h2>#Events</h2>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="">
+                                <div class="event">
+                                    <div class="image">
+                                        <img src="/assets/img/e1.jpg">
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
