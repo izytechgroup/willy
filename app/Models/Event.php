@@ -8,9 +8,7 @@ class Event extends Model
 {
 
     protected $table = 'events';
-    protected $fillable = [
-        'title', 'slug', 'flyer', 'type', 'country', 'address', 'organiser',
-        'phone', 'phone2', 'description', 'last_updated_by', 'status'
-    ];
+    protected $guarded = ['id'];
+    protected $dates = ['date'];
 
 }

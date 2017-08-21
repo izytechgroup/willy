@@ -26,8 +26,8 @@
                             <div class="form-select grey">
                                 <select class="" name="status">
                                     <option value="">All</option>
-                                    <option value="published" {{ Request::get('status') == 'published' ? 'selected' : '' }}>Published</option>
-                                    <option value="unpublished" {{ Request::get('status') == 'unpublished' ? 'selected' : '' }}>Unpublished</option>
+                                    <option value="published" {{ Request::get('status') == 'published' ? 'selected' : '' }}>Public</option>
+                                    <option value="unpublished" {{ Request::get('status') == 'unpublished' ? 'selected' : '' }}>Privé</option>
                                 </select>
                             </div>
                         </div>
@@ -61,10 +61,10 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Status</th>
-                            <th>Created</th>
-                            <th>Published</th>
+                            <th>Titre</th>
+                            <th>Statut</th>
+                            <th>Date de l'event</th>
+                            <th>Date de creation</th>
                         </tr>
                     </thead>
 
@@ -72,9 +72,9 @@
                         @foreach($events as $event)
                             <tr data-href="{{ route('events.edit', $event->id) }}">
                                 <td class="bold">{{ $event->title }}</td>
-                                <td>{{ $event->status === 'published' ? 'Published' : 'Unpublished'}}</td>
+                                <td>{{ $event->status === 'published' ? 'Public' : 'Privé'}}</td>
+                                <td>{{ date('d/m/Y', strtotime($event->date)) }}</td>
                                 <td>{{ date('d/m/Y H:i', strtotime($event->created_at)) }}</td>
-                                <td>{{ $event->status === 'published' ? 'Yes' : 'No'}}</td>
                             </tr>
                         @endforeach
                     </tbody>
