@@ -197,13 +197,44 @@
 
     .events {
         margin: 40px 0;
+        padding: 20px 0;
 
         .event {
+            width: 100%;
+            background-color: white;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.055);
+
+            .image {
+                width:50%;
+                position: relative;
+                float: left;
+                margin-right: 10px;
+            }
             img {
                 width: 100%;
             }
+
+            .details {
+                padding: 10px;
+                h4 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: red;
+                    margin-bottom: 10px;
+                }
+
+                ul {
+                    color: $color-teal;
+                    font-weight: 400;
+
+                    li {
+                        line-height: 26px;
+                        font-size: 15px;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
         }
     }
-
 
 }

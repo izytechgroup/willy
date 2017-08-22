@@ -1,3 +1,4 @@
+<?php setlocale(LC_TIME, "fr_FR");?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +25,12 @@
                 </div>
             </section>
 
-            @include('front.includes.nav')
+
+            <nav class="navbar navbar-default">
+                @include('front.includes.nav')
+            </nav>
+
+
 
 
             {{-- section audio  --}}
@@ -267,20 +273,44 @@
                 <div class="container">
                     <h2>#Events</h2>
 
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <a href="">
-                                <div class="event">
-                                    <div class="image">
-                                        <img src="/assets/img/e1.jpg">
+                    <div class="row mt-20">
+                        @foreach($events as $e)
+                            <div class="col-sm-6">
+                                <a href="">
+                                    <div class="event">
+                                        <div class="image">
+                                            <img src="{{ $e->smFlyer() }}" alt="{{ $e->title }}">
+                                        </div>
+
+                                        <div class="details">
+                                            <h4>{{ $e->title }}</h4>
+
+                                            <ul class="list-unstyled">
+                                                <li class="capitalize">
+                                                    <i class="flaticon-calendar"></i> {{ $e->frenchDate() }}
+                                                </li>
+
+                                                <li>
+                                                    <i class="flaticon-location"></i> {{ $e->address }}
+                                                </li>
+
+                                                <li>
+                                                    <i class="flaticon-phone"></i> {{ $e->phones() }}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </section>
 
         </div>
+
+
+        @include('front.includes.footer')
     </body>
 </html>

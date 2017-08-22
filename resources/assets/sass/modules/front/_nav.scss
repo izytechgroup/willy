@@ -46,6 +46,12 @@
                 }
             }
 
+            &.selected {
+                a {
+                    border-bottom: 2px solid $color-red;
+                }
+            }
+
             .dropdown-menu {
                 border: none;
                 border-radius: 5px;

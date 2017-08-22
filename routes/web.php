@@ -15,4 +15,5 @@
 //     return view('welcome');
 // });
 Route::get('/', 'views\front\HomeController@index')->name('home');
+Route::get('audio', 'views\front\AudioController@index')->name('audio');
 Route::get('logout', 'views\front\AuthController@logout')->name('logout');
