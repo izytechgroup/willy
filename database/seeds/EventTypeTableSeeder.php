@@ -27,5 +27,13 @@ class EventTypeTableSeeder extends Seeder
         EventType::create([
             'name' => 'Sortie en Boîte'
         ]);
+
+        EventType::create([
+            'name' => 'Cérémonie'
+        ]);
+
+        EventType::create([
+            'name' => 'Showcase'
+        ]);
     }
 }

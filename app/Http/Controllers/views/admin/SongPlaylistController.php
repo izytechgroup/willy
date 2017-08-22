@@ -4,12 +4,13 @@ namespace App\Http\Controllers\views\admin;
 
 use App\Models\Playlist;
 use App\Traits\SlugTrait;
+use App\Traits\UtilTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SongPlaylistController extends Controller
 {
-    use SlugTrait;
+    use SlugTrait, UtilTrait;
     protected $table = 'playlists';
 
     public function create()
@@ -30,7 +31,7 @@ class SongPlaylistController extends Controller
         $playlist = Playlist::with('songs')
         ->where('id', $id)
         ->first();
-        
+
         if (!$playlist) return redirect()->route('songs.index');
 
         return view('admin.songs.show', compact('playlist'));
@@ -39,15 +40,13 @@ class SongPlaylistController extends Controller
 
     public function store(Request $request)
     {
-        $slug = $this->getUniqueSlug($request->slug, $this->table);
-
         $playlist = Playlist::create([
-            'title'  => $request->title,
-            'cover'  => $request->cover,
-            'status' => $request->status,
-            'slug'   => $slug
+            'title'     => $request->title,
+            'cover'     => $request->cover,
+            'status'    => $request->status,
+            'number'    => $this->makePlaylistNumber()
         ]);
 
-        return redirect()->route('audio.playlist.show', $playlist->id);
+        return redirect()->route('audio.playlist.edit', $playlist->id);
     }
 }

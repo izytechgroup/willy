@@ -5,6 +5,7 @@ namespace App\Http\Controllers\views\admin;
 use Storage;
 use LaravelMP3;
 use App\Models\Song;
+use App\Traits\UtilTrait;
 use App\Models\Playlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Validator;
 
 class SongController extends Controller
 {
+    use UtilTrait;
+
     public function index ()
     {
         $playlists = Playlist::where('type', 'audio')
@@ -41,6 +44,7 @@ class SongController extends Controller
             'duration'      => $duration,
             'size'          => $size,
             'plays'         => 0,
+            'number'        => $this->makeSongNumber(),
             'downloads'     => 0
         ]);
 

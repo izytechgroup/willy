@@ -38,13 +38,6 @@
                                     class="form-control input-lg">
                                 </div>
 
-                                <div class="form-group">
-                                    <input type="text" name="slug" value="{{ old('slug') }}"
-                                    required
-                                    placeholder="URL de la playlist (automatique)"
-                                    id="slug-target"
-                                    class="form-control input-lg">
-                                </div>
                             </div>
                         </div>
                     </div>
