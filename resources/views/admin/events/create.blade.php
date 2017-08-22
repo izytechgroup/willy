@@ -47,51 +47,83 @@
                                     class="form-control input-lg">
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Type</label>
-                                    <select class="form-select grey" name="type">
-                                        @foreach ($types as $type)
-                                            <option value="{{ $type->name }}">{{ $type->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Type</label>
+                                            <select class="form-select grey" name="type">
+                                                @foreach ($types as $type)
+                                                    <option value="{{ $type->name }}">{{ $type->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                <div class="mt-20 form-group">
-                                    <label>Description</label>
-                                    <textarea name="description" class="tiny"></textarea>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Pays</label>
+                                            <select class="form-select grey" name="country">
+                                                @foreach($countries as $c)
+                                                    <option value="{{ $c }}">{{ $c }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Adresse</label>
                                     <input type="text" name="address" value="{{ old('adresse') }}"
-                                    class="form-control input-lg">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Pays</label>
-                                    <select class="form-select grey" name="country">
-                                        <option value="unpublished">France</option>
-                                        <option value="published">Belgique</option>
-                                        <option value="published">Allemagne</option>
-                                    </select>
+                                    class="form-control input-lg" placeholder="Adresse complete de l'event">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Organisateur</label>
                                     <input type="text" name="organizer" value="{{ old('organizer') }}"
-                                    class="form-control input-lg">
+                                    class="form-control input-lg" placeholder="Nom de l'organisateur/promoteur">
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Téléphone 1 </label>
-                                    <input type="text" name="phone" value="{{ old('phone') }}"
-                                    class="form-control input-lg">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Téléphone 1 </label>
+                                            <input type="text" name="phone" value="{{ old('phone') }}"
+                                            class="form-control input-lg" placeholder="Numero de telephone 1">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Téléphone 2</label>
+                                            <input type="text" name="phone2" value="{{ old('phone2') }}"
+                                            class="form-control input-lg" placeholder="Numero de telephone 2">
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Téléphone 2</label>
-                                    <input type="text" name="phone2" value="{{ old('phone2') }}"
-                                    class="form-control input-lg">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" name="email" value="{{ old('email') }}"
+                                            class="form-control input-lg" placeholder="Email à contacter">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Site Internet</label>
+                                            <input type="text" name="website" value="{{ old('website') }}"
+                                            class="form-control input-lg" placeholder="Site web de l'event/promoteur">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="mt-20 form-group">
+                                    <label>Description</label>
+                                    <textarea name="description" class="tiny"></textarea>
                                 </div>
 
                             </div>
@@ -103,31 +135,38 @@
                     <div class="col-sm-4">
                         <div class="block">
                             <div class="block-content">
-                                <div class="form-select grey">
+                                <h3>Flyer</h3>
+
+                                <input type="hidden" class="form-control" id='profile' name='flyer' readonly value="{{ old('flyer') }}">
+                                <div id="profile_view" class="mt-20"></div>
+
+                                <div class="text-right">
+                                    <a href="/backend/filemanager/dialog.php?type=1&field_id=profile" class="iframe-btn btn-dark btn round"> <i class='flaticon-folder'></i> Files</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block mt-40">
+                            <div class="block-content">
+                                <h3>Statut</h3>
+
+                                <div class="form-select grey mt-10">
                                     <select class="" name="status">
-                                        <option value="unpublished">Unpublished</option>
-                                        <option value="published">Published</option>
+                                        <option value="unpublished">Privé</option>
+                                        <option value="published">Public</option>
                                     </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="text" name="date" value="{{ old('date') }}"
+                                    class="form-control input-lg datepicker" placeholder="Date de l'event" readonly>
                                 </div>
 
                                 <div class="mt-20">
                                     <button type="submit" name="submit" class="btn btn-lg btn-blue btn-block">
                                         <i class="flaticon-check"></i> Enregistrer
                                     </button>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="block mt-40">
-                            <div class="block-content">
-                                <h3>Flyer</h3>
-
-                                <input type="hidden" class="form-control" id='profile' name='image' readonly value="{{ old('flyer') }}">
-                                <div id="profile_view" class="mt-20"></div>
-
-                                <div class="text-right">
-                                    <a href="/backend/filemanager/dialog.php?type=1&field_id=profile" class="iframe-btn btn-dark btn round"> <i class='flaticon-folder'></i> Files</a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +189,11 @@
 <script>
 $(document).ready(function() {
     $('#slug-target').slugify('#slug-source');
-    $('.tags').tokenfield();
+    $('.datepicker').datepicker({
+        startDate: 'd',
+        format: 'dd-mm-yyyy',
+        autoclose: true
+    })
 
     $('.iframe-btn').fancybox({
         'width'     : 900,
@@ -161,7 +204,7 @@ $(document).ready(function() {
     });
 
     $("body").hover(function() {
-        var profilePic = $("input[name='image']").val();
+        var profilePic = $("input[name='flyer']").val();
         if(profilePic)
             $('#profile_view').html("<img class='thumbnail img-responsive mb-10' src='" + profilePic +"'/>");
     });

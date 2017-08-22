@@ -25,7 +25,11 @@ class CreateEventsTable extends Migration
             $table->string('organizer')->nullable();
             $table->string('phone')->nullable();
             $table->string('phone2')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->string('time')->nullable();
             $table->text('description')->nullable();
+            $table->date('date')->nullable();
             $table->enum('status', ['published', 'unpublished'])->default('unpublished');
             $table->timestamps();
         });

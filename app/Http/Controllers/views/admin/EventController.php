@@ -4,6 +4,7 @@ namespace App\Http\Controllers\views\admin;
 
 use DB;
 use Auth;
+use Carbon\Carbon;
 use App\Models\Event;
 use App\Models\EventType;
 use App\Traits\SlugTrait;
@@ -53,8 +54,11 @@ class EventController extends Controller
     public function create()
     {
         $types = EventType::get();
+        $countries = [
+            'Allemagne', 'Belgique', 'Cameroun', 'Canada', 'Danmark', 'Espagne', 'France', 'Italie', 'Suisse'
+        ];
 
-        return view('admin.events.create', compact('types'));
+        return view('admin.events.create', compact('types', 'countries'));
     }
 
     /**
@@ -69,7 +73,8 @@ class EventController extends Controller
         $validator = Validator::make($request->all(), [
             'title'         => 'required',
             'slug'          => 'required',
-            'type'          => 'required'
+            'type'          => 'required',
+            'date'          => 'required'
         ]);
 
         if($validator->fails())
@@ -90,10 +95,14 @@ class EventController extends Controller
             'phone'             => $request->has('phone') ? $request->phone : "",
             'phone2'            => $request->has('phone2') ? $request->phone2 : "",
             'status'            => $request->status,
+            'email'             => $request->email,
+            'website'           => $request->website,
+            'date'              => Carbon::parse($request->date),
             'last_updated_by'   => Auth::user()->id
         ]);
 
-        return redirect()->route('events.edit', ['id' => $event->id]);
+        return redirect()->route('events.edit', ['id' => $event->id])
+        ->with('message', 'L\'event a bien été ajouté');
     }
 
 
@@ -114,24 +123,28 @@ class EventController extends Controller
             return redirect()->route('events.index');
 
         $types = EventType::get();
+        $countries = [
+            'Allemagne', 'Belgique', 'Cameroun', 'Canada', 'Danmark', 'Espagne', 'France', 'Italie', 'Suisse'
+        ];
 
-        return view('admin.events.edit', ['event' => $event, 'types' => $types]);
+        return view('admin.events.edit', ['event' => $event, 'types' => $types, 'countries' => $countries]);
     }
 
 
     public function update(Request $request, $id){
 
         $validator = Validator::make($request->all(), [
-            'title'         => 'required'
+            'title'         => 'required',
+            'date'          => 'required'
         ]);
 
         if($validator->fails())
-            return redirect()->back()->withErrors(['validator' => 'Title is required']);
+            return redirect()->back()->withErrors(['validator' => 'Le titre et la date sont requis']);
 
 
         $event = Event::find($id);
         if ( !$event )
-            return redirect()->back()->withErrors(['error' => 'This event does not exist']);
+            return redirect()->back()->withErrors(['error' => 'L\event n\existe pas']);
 
         $event->title           = $request->title;
         $event->flyer           = $request->flyer;
@@ -143,6 +156,9 @@ class EventController extends Controller
         $event->phone           = $request->phone;
         $event->phone2          = $request->phone2;
         $event->status          = $request->status;
+        $event->email           = $request->email;
+        $event->website         = $request->website;
+        $event->date            = Carbon::parse($request->date);
         $event->last_updated_by = Auth::user()->id;
 
         $event->save();

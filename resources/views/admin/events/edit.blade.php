@@ -45,35 +45,39 @@
                                     'disabled' => 'disabled']) !!}
                             </div>
 
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Type</label>
+                                        <select class="form-select grey" name="type">
+                                            @foreach ($types as $type)
+                                                <option value="{{ $type->name }}" {{ $event->type == $type->name ? 'selected' : ''}}>{{ $type->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Pays</label>
+                                        <select class="form-select grey" name="country">
+                                            @foreach($countries as $c)
+                                                <option value="{{ $c }}" {{ $event->country == $c ? 'selected' : '' }}>{{ $c }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <div class="form-group">
-                                <label>Type</label>
-                                <select class="form-select grey" name="type">
-                                    @foreach ($types as $type)
-                                        <option value="{{ $type->name }}" {{ $event->type == $type->name ? 'selected' : ''}}>{{ $type->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="mt-20">
-                                {!! Form::label('Description') !!}
-                                {!! Form::textarea('description', null, ['class' => 'tiny']) !!}
-                            </div>
-
-                            <div class="form-group mt-20">
                                 {!! Form::label('Adresse') !!}
                                 {!! Form::text('address', null, [
                                     'class' => 'form-control input-lg ',
-                                    'placeholder' => 'Adresse']) !!}
+                                    'placeholder' => 'Adresse de l\organisateur/promoteur']) !!}
                             </div>
 
-                            <div class="form-group">
-                                <label>Pays</label>
-                                <select class="form-select grey" name="country">
-                                    <option value="unpublished">France</option>
-                                    <option value="published">Belgique</option>
-                                    <option value="published">Allemagne</option>
-                                </select>
-                            </div>
 
                             <div class="form-group mt-20">
                                 {!! Form::label('Organisateur') !!}
@@ -82,18 +86,53 @@
                                     'placeholder' => 'Organisateur']) !!}
                             </div>
 
-                            <div class="form-group mt-20">
-                                {!! Form::label('Téléphone 1') !!}
-                                {!! Form::text('phone', null, [
-                                    'class' => 'form-control input-lg ',
-                                    'placeholder' => 'Téléphone 1']) !!}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group mt-20">
+                                        {!! Form::label('Téléphone 1') !!}
+                                        {!! Form::text('phone', null, [
+                                            'class' => 'form-control input-lg ',
+                                            'placeholder' => 'Téléphone 1']) !!}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group mt-20">
+                                        {!! Form::label('Téléphone 2') !!}
+                                        {!! Form::text('phone2', null, [
+                                            'class' => 'form-control input-lg ',
+                                            'placeholder' => 'Téléphone 2']) !!}
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="form-group mt-20">
-                                {!! Form::label('Téléphone 2') !!}
-                                {!! Form::text('phone2', null, [
-                                    'class' => 'form-control input-lg ',
-                                    'placeholder' => 'Téléphone 2']) !!}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group mt-20">
+                                        {!! Form::label('Email') !!}
+                                        {!! Form::email('email', null, [
+                                            'class' => 'form-control input-lg ',
+                                            'placeholder' => 'Email']) !!}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group mt-20">
+                                        {!! Form::label('Site Internet') !!}
+                                        {!! Form::text('website', null, [
+                                            'class' => 'form-control input-lg ',
+                                            'placeholder' => 'Site Internet']) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="mt-20">
+                                {!! Form::label('Description') !!}
+                                {!! Form::textarea('description', null, ['class' => 'tiny']) !!}
                             </div>
                         </div>
                     </div>
@@ -103,23 +142,6 @@
 
                 <div class="col-sm-4">
                     <div class="block">
-                        <div class="block-content">
-                            <div class="form-select grey">
-                                {!! Form::select('status',
-                                    ['unpublished' => 'Unpublished', 'published' => 'Published'],
-                                    $event->status) !!}
-                            </div>
-
-                            <div class="mt-20">
-                                <button type="submit" name="submit" class="btn btn-lg btn-blue btn-block">
-                                    <i class="flaticon-check"></i> Sauvegarder
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="block mt-40">
                         <div class="block-content">
                             <h3>Flyer</h3>
 
@@ -131,6 +153,29 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="block mt-40">
+                        <div class="block-content">
+                            <div class="form-select grey">
+                                {!! Form::select('status',
+                                    ['unpublished' => 'Privé', 'published' => 'Public'],
+                                    $event->status) !!}
+                            </div>
+
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="text" name="date" value="{{ date('d-m-Y', strtotime($event->date)) }}"
+                                class="form-control input-lg datepicker" placeholder="Date de l'event" readonly>
+                            </div>
+
+                            <div class="mt-20">
+                                <button type="submit" name="submit" class="btn btn-lg btn-blue btn-block">
+                                    <i class="flaticon-check"></i> Sauvegarder
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 {{-- End of col 3 --}}
 
@@ -161,7 +206,7 @@ $(document).ready(function() {
     });
 
     $("body").hover(function() {
-        var profilePic = $("input[name='image']").val();
+        var profilePic = $("input[name='flyer']").val();
         if(profilePic)
             $('#profile_view').html("<img class='thumbnail img-responsive mb-10' src='" + profilePic +"'/>");
     });

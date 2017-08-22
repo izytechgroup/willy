@@ -41,8 +41,14 @@
 
             &.active {
                 a {
-                    background-color: $color-purple;
+                    background-color: $color-red;
                     color: white;
+                }
+            }
+
+            &.selected {
+                a {
+                    border-bottom: 2px solid $color-red;
                 }
             }
 

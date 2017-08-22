@@ -122,6 +122,7 @@
                 color: red;
                 font-weight: 300;
                 font-size: 16px;
+                @include ellipsis;
             }
 
             .metas {
@@ -132,22 +133,39 @@
 
 
     .brand-new-videos {
-        background-color: white;
-        margin-top: 40px;
-        padding-bottom: 40px;
+        // background-image: url('/assets/img/team.jpg');
+        background-color: $color-red;
+        background-size: cover;
+        margin: 40px 0;
+        @include skewY(2deg);
+
+        .container {
+            @include skewY(-2deg);
+            padding: 60px 0;
+        }
+
+        .overlay {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0,0,0,0.37);
+        }
+
+        h2, .more a {color: white;}
 
         .main-video {
             img {
                 width: 100%;
                 height: auto;
+                margin-bottom: 10px;
             }
 
             .title {
-                margin-top:10px;
                 text-transform: lowercase;
                 text-transform: capitalize;
                 font-size: 16px;
-                font-weight: 500;
+                font-weight: 400;
+                color: white;
             }
         }
 
@@ -156,9 +174,67 @@
                 font-weight: 500;
                 margin-bottom: 20px;
                 margin-top:10px;
+                color: white;
+                text-transform: capitalize;
+                @include ellipsis;
+            }
+        }
+
+        .main-video, .video {
+            position: relative;
+
+            .play {
+                position: absolute;
+                width: 100%;
+
+                img {
+                    width: 100%;
+                }
             }
         }
     }
 
+
+    .events {
+        margin: 40px 0;
+        padding: 20px 0;
+
+        .event {
+            width: 100%;
+            background-color: white;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.055);
+
+            .image {
+                width:50%;
+                position: relative;
+                float: left;
+                margin-right: 10px;
+            }
+            img {
+                width: 100%;
+            }
+
+            .details {
+                padding: 10px;
+                h4 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: red;
+                    margin-bottom: 10px;
+                }
+
+                ul {
+                    color: $color-teal;
+                    font-weight: 400;
+
+                    li {
+                        line-height: 26px;
+                        font-size: 15px;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
 
 }

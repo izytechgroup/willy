@@ -1,3 +1,4 @@
+<?php setlocale(LC_TIME, "fr_FR");?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +25,12 @@
                 </div>
             </section>
 
-            @include('front.includes.nav')
+
+            <nav class="navbar navbar-default">
+                @include('front.includes.nav')
+            </nav>
+
+
 
 
             {{-- section audio  --}}
@@ -154,6 +160,13 @@
                         </div>
                     </div>
 
+                    <div class="more">
+                        <a href="/videos">
+                            <i class="flaticon-minus"></i>
+                            Toute la musique
+                        </a>
+                    </div>
+
                 </div>
             </section>
 
@@ -161,6 +174,7 @@
 
             {{-- Section video  --}}
             <section class="brand-new-videos">
+                {{-- <div class="overlay"></div> --}}
                 <div class="container">
                     <h2>#New Videos</h2>
 
@@ -168,9 +182,13 @@
                         <div class="col-sm-6">
                             <a href="">
                                 <div class="main-video">
-                                    <img src="https://img.youtube.com/vi/sY5zP9eKPWk/hqdefault.jpg">
+                                    <div class="play">
+                                        <img src="/assets/img/play.png" alt="">
+                                    </div>
+                                    <img src="https://img.youtube.com/vi/sY5zP9eKPWk/mqdefault.jpg">
+
                                     <div class="title">
-                                        COLLER LA PETITE AWILO BANA C4 ARAFAT WILLY MIX SERGE BEYNAUD DEBORDEAU SHADO CHRIST JOSÉ BABAH
+                                        {{ strtolower('COLLER LA PETITE AWILO BANA C4 ARAFAT WILLY MIX SERGE BEYNAUD DEBORDEAU SHADO CHRIST JOSÉ BABAH') }}
                                     </div>
                                 </div>
                             </a>
@@ -183,9 +201,14 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/h7iO7xIPMIA/hqdefault.jpg" class="img-responsive">
+                                                <div class="play">
+                                                    <img src="/assets/img/play.png" alt="">
+                                                </div>
+
+                                                <img src="https://img.youtube.com/vi/h7iO7xIPMIA/mqdefault.jpg" class="img-responsive">
+
                                                 <div class="title">
-                                                    WILLY Mix MAKOSSA AOUT 2017 DORA DECA , PETIT PAYS ,SERGEO POLO,LONGUE LONGUE
+                                                    {{ strtolower('WILLY Mix MAKOSSA AOUT 2017 DORA DECA , PETIT PAYS ,SERGEO POLO,LONGUE LONGUE') }}
                                                 </div>
                                             </div>
                                         </a>
@@ -194,9 +217,15 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/3Ahx-hzez1w/hqdefault.jpg" class="img-responsive">
+                                                <div class="play">
+                                                    <img src="/assets/img/play.png" alt="">
+                                                </div>
+
+                                                <img src="https://img.youtube.com/vi/3Ahx-hzez1w/mqdefault.jpg" class="img-responsive">
+
+
                                                 <div class="title">
-                                                    MIX VIDÉO BENSKIN AOUT 2017 " GERARD BEN PASSY LA NOBLESSE WILLY Mix NAT LA BOMBE DJ MARTIAL
+                                                    {{ strtolower('MIX VIDEO BENSKIN AOUT 2017 " GERARD BEN PASSY LA NOBLESSE WILLY Mix NAT LA BOMBE DJ MARTIAL') }}
                                                 </div>
                                             </div>
                                         </a>
@@ -205,7 +234,7 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/leNooW4ZpqY/hqdefault.jpg" class="img-responsive">
+                                                <img src="https://img.youtube.com/vi/leNooW4ZpqY/mqdefault.jpg" class="img-responsive">
                                                 <div class="title">
                                                     HIT CAMER VIDEO MIX SEPTEMBRE 2017 BY WILLY Mix
                                                 </div>
@@ -216,7 +245,7 @@
                                     <div class="col-sm-6">
                                         <a href="">
                                             <div class="video">
-                                                <img src="https://img.youtube.com/vi/Ykh2Bw2I7KE/hqdefault.jpg" class="img-responsive">
+                                                <img src="https://img.youtube.com/vi/Ykh2Bw2I7KE/mqdefault.jpg" class="img-responsive">
                                                 <div class="title">
                                                     WILLY MIX COUPÉ DÉCALÉ VOL 213
                                                 </div>
@@ -227,9 +256,61 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="more">
+                        <a href="/videos">
+                            <i class="flaticon-minus"></i>
+                            Toutes les vidéos
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+
+            {{-- Section events  --}}
+            <section class="events">
+                <div class="container">
+                    <h2>#Events</h2>
+
+                    <div class="row mt-20">
+                        @foreach($events as $e)
+                            <div class="col-sm-6">
+                                <a href="">
+                                    <div class="event">
+                                        <div class="image">
+                                            <img src="{{ $e->smFlyer() }}" alt="{{ $e->title }}">
+                                        </div>
+
+                                        <div class="details">
+                                            <h4>{{ $e->title }}</h4>
+
+                                            <ul class="list-unstyled">
+                                                <li class="capitalize">
+                                                    <i class="flaticon-calendar"></i> {{ $e->frenchDate() }}
+                                                </li>
+
+                                                <li>
+                                                    <i class="flaticon-location"></i> {{ $e->address }}
+                                                </li>
+
+                                                <li>
+                                                    <i class="flaticon-phone"></i> {{ $e->phones() }}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </section>
 
         </div>
+
+
+        @include('front.includes.footer')
     </body>
 </html>
