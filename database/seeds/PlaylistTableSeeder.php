@@ -14,21 +14,21 @@ class PlaylistTableSeeder extends Seeder
     {
         Playlist::create([
             'title' => 'Mix Vidéo',
-            'slug'  => 'mix-video',
+            'number'=> 101001,
             'status'=> 'published',
             'type'  => 'video'
         ]);
 
         Playlist::create([
             'title' => 'Vidéo VDJ',
-            'slug'  => 'video-vdj',
+            'number'=> 101002,
             'status'=> 'published',
             'type'  => 'video'
         ]);
 
         Playlist::create([
             'title' => 'Clips',
-            'slug'  => 'clips',
+            'number'=> 101003,
             'status'=> 'published',
             'type'  => 'video'
         ]);
