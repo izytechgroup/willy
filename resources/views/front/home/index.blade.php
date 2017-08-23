@@ -161,7 +161,7 @@
                     </div>
 
                     <div class="more">
-                        <a href="/videos">
+                        <a href="/audio">
                             <i class="flaticon-minus"></i>
                             Toute la musique
                         </a>

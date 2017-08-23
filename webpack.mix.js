@@ -12,4 +12,5 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/assets/js/app.min.js');
+mix.js('resources/assets/js/music.js', 'public/assets/js/music.min.js');
    // .sass('resources/assets/sass/app.scss', 'public/assets/css/app.min.css');

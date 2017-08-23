@@ -9,12 +9,17 @@
         <link rel="icon" type="image/png"  href="/favicon.ico">
         @include('front.includes.favicons')
         @yield('head')
+        <script>
+            var _auth = <?php echo json_encode(Auth::check() ? Auth::user()->api_token : '');?>;
+        </script>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             @include('front.includes.nav')
         </nav>
 
-
+        <div class="mt-80"></div>
+        @yield('body')
+        @yield('js')
     </body>
 </html>
