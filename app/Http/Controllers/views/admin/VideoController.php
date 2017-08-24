@@ -29,7 +29,7 @@ class VideoController extends Controller
 
             $keywords = $request->keywords;
             $videos = Video::when($keywords, function($query) use ($keywords) {
-                return $query->where('title', 'rlike', $keywords);
+                return $query->where('title', 'like', '%'.$keywords.'%');
             })
             ->when($status, function($query) use ($status) {
                 return $query->where('status', $status);

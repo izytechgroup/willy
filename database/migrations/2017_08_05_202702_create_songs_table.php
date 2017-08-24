@@ -17,6 +17,7 @@ class CreateSongsTable extends Migration
             $table->increments('id');
             $table->integer('playlist_id')->unsigned();
             $table->string('title');
+            $table->integer('number');
             $table->string('link');
             $table->string('duration')->nullable();
             $table->integer('size')->default(0);

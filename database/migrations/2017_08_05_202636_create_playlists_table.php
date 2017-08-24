@@ -16,7 +16,7 @@ class CreatePlaylistsTable extends Migration
         Schema::create('playlists', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug');
+            $table->integer('number');
             $table->string('cover')->nullable();
             $table->enum('type', ['audio', 'video'])->default('audio');
             $table->enum('status', ['published', 'unpublished'])->default('unpublished');
