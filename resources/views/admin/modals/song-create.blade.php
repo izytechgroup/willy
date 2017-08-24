@@ -25,9 +25,8 @@
                         <div class="form-group">
                             <input type="text" name="link" value="{{ old('link') }}"
                             required
-                            readonly
                             placeholder="Lien de la piste"
-                            id="link"
+                            id="linker"
                             class="form-control input-lg">
                         </div>
 
@@ -36,7 +35,7 @@
 
 
                         <div class="text-left">
-                            <a href="/backend/filemanager/dialog.php?type=2&field_id=link" class="iframe-btn btn-dark btn btn-lg">
+                            <a href="/backend/filemanager/dialog.php?type=2&field_id=linker" class="iframe-btn btn-dark btn btn-lg">
                                 <i class='flaticon-folder'></i> Fichiers
                             </a>
 

@@ -20,7 +20,7 @@
                                 <input type="text" name="link"
                                     v-model="song.link"
                                     placeholder="Lien de la piste"
-                                    id="link"
+                                    id="link2"
                                     class="form-control input-lg">
                             </div>
 
@@ -29,7 +29,7 @@
 
 
                             <div class="text-left">
-                                <a href="/backend/filemanager/dialog.php?type=2&field_id=link" class="iframe-btn btn-dark btn btn-lg">
+                                <a href="/backend/filemanager/dialog.php?type=2&field_id=link2" class="iframe-btn btn-dark btn btn-lg">
                                     <i class='flaticon-folder'></i> Fichiers
                                 </a>
 
