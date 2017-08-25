@@ -17,7 +17,7 @@ class SongTableSeeder extends Seeder
             'number'        => 101001,
             'playlist_id'   => 2,
             'link'          => 'http://localhost:8000/docs/images/audio/playlist1/Eminem_Rap_God.mp3',
-            'duration'      => '5 min',
+            'duration'      => '03:42',
             'size'          => 3,
             'plays'         => 58,
             'downloads'     => 15
@@ -28,7 +28,7 @@ class SongTableSeeder extends Seeder
             'number'        => 101002,
             'playlist_id'   => 3,
             'link'          => 'http://localhost:8000/docs/images/audio/playlist1/Eminem_Rap_God.mp3',
-            'duration'      => '5 min',
+            'duration'      => '05:52',
             'size'          => 3,
             'plays'         => 58,
             'downloads'     => 15
@@ -39,7 +39,7 @@ class SongTableSeeder extends Seeder
             'number'        => 101003,
             'playlist_id'   => 2,
             'link'          => 'http://localhost:8000/docs/images/audio/playlist1/Flux_Pavilion_-_I_Can_T_Stop.mp3',
-            'duration'      => '5 min',
+            'duration'      => '04:21',
             'size'          => 3,
             'plays'         => 58,
             'downloads'     => 15

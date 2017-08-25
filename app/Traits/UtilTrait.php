@@ -22,9 +22,9 @@ trait UtilTrait
 
     public function makeSongNumber()
     {
-        if($lastSong = $lastSong::orderBy('id', 'desc')->first())
+        if($lastSong = Song::orderBy('id', 'desc')->first())
         {
-            $number = $lastApp->number ++;
+            $number = $lastSong->number ++;
         }
         else{
             $number  = 1010000;

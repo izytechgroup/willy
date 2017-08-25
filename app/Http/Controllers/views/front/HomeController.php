@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\views\front;
 
 use App\Models\Event;
+use App\Models\Song;
+use App\Models\Video;
+use App\Models\PlayList;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,10 +15,25 @@ class HomeController extends Controller
     public function index ()
     {
         $events = Event::canDisplay()
-        ->orderBy('date')
-        ->take(2)
-        ->get();
+            ->orderBy('date')
+            ->take(2)
+            ->get();
 
-        return view('front.home.index', compact('events'));
+        $songs  = Song::orderBy('id')
+            ->with('playlist')
+            ->take(2)
+            ->get();
+
+        $playlists  = PlayList::where('type', 'audio')
+            ->with('songs')
+            ->orderBy('id')
+            ->take(2)
+            ->get();
+
+        $videos     = Video::orderBy('id')
+            ->take(4)
+            ->get();
+
+        return view('front.home.index', compact('events', 'songs', 'playlists', 'videos'));
     }
 }

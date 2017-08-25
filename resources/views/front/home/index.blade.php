@@ -44,61 +44,36 @@
                             <h4><i class="flaticon-minus"></i> Songs</h4>
 
                             <div class="songs">
-                                <a href="">
-                                    <div class="song">
-                                        <div class="cover">
-                                            <img src="https://static.gigwise.com/gallery/5209864_8262181_JasonDeruloTatGall.jpg" alt="">
+                                @foreach ($songs as $song)
+                                    <a href="">
+                                        <div class="song">
+                                            <div class="cover">
+                                                <img src="{{ $song->playlist->cover }}" alt="" class="img-responsive">
+                                            </div>
+
+                                            <div class="details">
+                                                <div class="play">
+                                                    <i class="flaticon-play-round"></i>
+                                                </div>
+
+
+                                                <div class="title">
+                                                    {{ $song->title }}
+                                                </div>
+
+                                                <div class="metas">
+                                                    <ul class="list-inline">
+                                                        <li><i class="flaticon-time"></i> {{ $song->duration }}</li>
+                                                        <li><i class="flaticon-headphones"></i> {{ $song->plays }}</li>
+                                                        <li><i class="flaticon-download"></i> {{ $song->downloads }}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <div class="details">
-                                            <div class="play">
-                                                <i class="flaticon-play-round"></i>
-                                            </div>
-
-
-                                            <div class="title">
-                                                Bikutsi Mix Non Stop 2017 Lady Ponce Coco Argentee
-                                            </div>
-
-                                            <div class="metas">
-                                                <ul class="list-inline">
-                                                    <li><i class="flaticon-time"></i> 12:04</li>
-                                                    <li><i class="flaticon-headphones"></i> 57</li>
-                                                    <li><i class="flaticon-download"></i> 22</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                @endforeach
                                 {{-- End of first song  --}}
 
-
-                                <a href="">
-                                    <div class="song">
-                                        <div class="cover">
-                                            <img src="https://static.gigwise.com/gallery/5209864_8262181_JasonDeruloTatGall.jpg" alt="">
-                                        </div>
-
-                                        <div class="details">
-                                            <div class="play">
-                                                <i class="flaticon-play-round"></i>
-                                            </div>
-
-
-                                            <div class="title">
-                                                Bikutsi Mix Non Stop 2017 Lady Ponce Coco Argentee
-                                            </div>
-
-                                            <div class="metas">
-                                                <ul class="list-inline">
-                                                    <li><i class="flaticon-time"></i> 12:04</li>
-                                                    <li><i class="flaticon-headphones"></i> 57</li>
-                                                    <li><i class="flaticon-download"></i> 22</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
                             </div>
                         </div>
                         {{-- End of songs  --}}
@@ -109,52 +84,30 @@
 
                             <div class="playlists">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <a href="">
-                                            <div class="playlist">
-                                                <div class="bg">
-                                                    <div class="cover">
-                                                        <img src="https://static.gigwise.com/gallery/5209864_8262181_JasonDeruloTatGall.jpg" class="img-responsive">
-                                                    </div>
-                                                    <div class="details">
-                                                        <div class="title">
-                                                            Mix Audio
+                                    @foreach ($playlists as $playlist)
+                                        <div class="col-sm-6">
+                                            <a href="">
+                                                <div class="playlist">
+                                                    <div class="bg">
+                                                        <div class="cover">
+                                                            <img src="{{ $playlist->cover }}" class="img-responsive">
                                                         </div>
+                                                        <div class="details">
+                                                            <div class="title">
+                                                                {{ $playlist->title }}
+                                                            </div>
 
-                                                        <div class="metas">
-                                                            <ul class="list-inline">
-                                                                <li><i class="flaticon-sound"></i> 22 Titres</li>
-                                                            </ul>
+                                                            <div class="metas">
+                                                                <ul class="list-inline">
+                                                                    <li><i class="flaticon-sound"></i> {{ sizeof($playlist->songs)}} Titres</li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    {{-- end of first album  --}}
-
-                                    <div class="col-sm-6">
-                                        <a href="">
-                                            <div class="playlist">
-                                                <div class="bg">
-                                                    <div class="cover">
-                                                        <img src="http://6uh9u7hhy8-flywheel.netdna-ssl.com/wp-content/uploads/2016/03/beyonce-formation-tracklist-1.jpg" class="img-responsive">
-                                                    </div>
-                                                    <div class="details">
-                                                        <div class="title">
-                                                            Audio DJ
-                                                        </div>
-
-                                                        <div class="metas">
-                                                            <ul class="list-inline">
-                                                                <li><i class="flaticon-sound"></i> 13 Titres</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -177,81 +130,44 @@
                 {{-- <div class="overlay"></div> --}}
                 <div class="container">
                     <h2>#New Videos</h2>
-
                     <div class="row mt-20">
-                        <div class="col-sm-6">
-                            <a href="">
-                                <div class="main-video">
-                                    <div class="play">
-                                        <img src="/assets/img/play.png" alt="">
-                                    </div>
-                                    <img src="https://img.youtube.com/vi/sY5zP9eKPWk/mqdefault.jpg">
+                        @if (sizeof($videos) > 0)
+                            <div class="col-sm-6">
+                                <a href="">
+                                    <div class="main-video">
+                                        <div class="play">
+                                            <img src="/assets/img/play.png" alt="">
+                                        </div>
+                                        <img src="https://img.{{ $videos[0]->origin }}.com/vi/{{ $videos[0]->origin_id }}/mqdefault.jpg">
 
-                                    <div class="title">
-                                        {{ strtolower('COLLER LA PETITE AWILO BANA C4 ARAFAT WILLY MIX SERGE BEYNAUD DEBORDEAU SHADO CHRIST JOSÉ BABAH') }}
+                                        <div class="title">
+                                            {{ strtolower($videos[0]->title ) }}
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endif
+
                         {{-- End main video  --}}
 
                         <div class="col-sm-6">
                             <div class="videos">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <a href="">
-                                            <div class="video">
-                                                <div class="play">
-                                                    <img src="/assets/img/play.png" alt="">
+                                    @foreach ($videos as $video)
+                                        <div class="col-sm-6">
+                                            <a href="">
+                                                <div class="video">
+                                                    <div class="play">
+                                                        <img src="/assets/img/play.png" alt="">
+                                                    </div>
+                                                    <img src="https://img.{{ $video->origin }}.com/vi/{{ $video->origin_id }}/mqdefault.jpg" class="img-responsive">
+                                                    <div class="title">
+                                                        {{ strtolower($video->title ) }}
+                                                    </div>
                                                 </div>
-
-                                                <img src="https://img.youtube.com/vi/h7iO7xIPMIA/mqdefault.jpg" class="img-responsive">
-
-                                                <div class="title">
-                                                    {{ strtolower('WILLY Mix MAKOSSA AOUT 2017 DORA DECA , PETIT PAYS ,SERGEO POLO,LONGUE LONGUE') }}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <a href="">
-                                            <div class="video">
-                                                <div class="play">
-                                                    <img src="/assets/img/play.png" alt="">
-                                                </div>
-
-                                                <img src="https://img.youtube.com/vi/3Ahx-hzez1w/mqdefault.jpg" class="img-responsive">
-
-
-                                                <div class="title">
-                                                    {{ strtolower('MIX VIDEO BENSKIN AOUT 2017 " GERARD BEN PASSY LA NOBLESSE WILLY Mix NAT LA BOMBE DJ MARTIAL') }}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <a href="">
-                                            <div class="video">
-                                                <img src="https://img.youtube.com/vi/leNooW4ZpqY/mqdefault.jpg" class="img-responsive">
-                                                <div class="title">
-                                                    HIT CAMER VIDEO MIX SEPTEMBRE 2017 BY WILLY Mix
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <a href="">
-                                            <div class="video">
-                                                <img src="https://img.youtube.com/vi/Ykh2Bw2I7KE/mqdefault.jpg" class="img-responsive">
-                                                <div class="title">
-                                                    WILLY MIX COUPÉ DÉCALÉ VOL 213
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                            </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
