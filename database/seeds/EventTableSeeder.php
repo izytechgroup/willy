@@ -16,7 +16,7 @@ class EventTableSeeder extends Seeder
         Event::create([
             'title'             => 'Mariage Ella et Homban',
             'slug'              => 'mariage-gabin',
-            'flyer'             => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'flyer'             => '/docs/images/audio/playlist1/hqdefault.jpg',
             'type'              => 'Cérémonie',
             'country'           => 'Cameroun',
             'address'           => '12 Carrfour Waka Bafoussam',
@@ -35,7 +35,7 @@ class EventTableSeeder extends Seeder
         Event::create([
             'title'             => 'Signature Camermix - Bismtr',
             'slug'              => 'camermix-bismtr',
-            'flyer'             => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'flyer'             => '/docs/images/audio/playlist1/hqdefault.jpg',
             'type'              => 'Spectacle',
             'country'           => 'Cameroun',
             'address'           => '12 Carrfour Waka Bafoussam',
@@ -54,7 +54,7 @@ class EventTableSeeder extends Seeder
         Event::create([
             'title'             => 'Naissance du petit DG',
             'slug'              => 'naissance-petit-dg',
-            'flyer'             => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'flyer'             => '/docs/images/audio/playlist1/hqdefault.jpg',
             'type'              => 'Festival',
             'country'           => 'Cameroun',
             'address'           => '12 Carrfour Waka Bafoussam',
@@ -73,7 +73,7 @@ class EventTableSeeder extends Seeder
         Event::create([
             'title'             => 'Anniversaire Samantha Fox',
             'slug'              => 'anniv-sam',
-            'flyer'             => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'flyer'             => '/docs/images/audio/playlist1/hqdefault.jpg',
             'type'              => 'Sortie en Boîte',
             'country'           => 'Espagne',
             'address'           => '12 Carrfour Waka Barcelona',

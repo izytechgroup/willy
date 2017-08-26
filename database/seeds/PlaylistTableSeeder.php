@@ -16,14 +16,14 @@ class PlaylistTableSeeder extends Seeder
             'title' => 'Mix Vidéo',
             'number'=> 101001,
             'status'=> 'published',
-            'cover' => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'cover' => '/docs/images/audio/playlist1/hqdefault.jpg',
             'type'  => 'video'
         ]);
 
         Playlist::create([
             'title' => 'Mix Audio',
             'number'=> 101002,
-            'cover' => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'cover' => '/docs/images/audio/playlist1/hqdefault.jpg',
             'status'=> 'published',
             'type'  => 'audio'
         ]);
@@ -31,7 +31,7 @@ class PlaylistTableSeeder extends Seeder
         Playlist::create([
             'title' => 'Audio Voyage',
             'number'=> 101003,
-            'cover' => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'cover' => '/docs/images/audio/playlist1/hqdefault.jpg',
             'status'=> 'published',
             'type'  => 'audio'
         ]);
@@ -39,7 +39,7 @@ class PlaylistTableSeeder extends Seeder
         Playlist::create([
             'title' => 'Clips',
             'number'=> 101004,
-            'cover' => 'http://localhost:8000/docs/images/audio/playlist1/hqdefault.jpg',
+            'cover' => '/docs/images/audio/playlist1/hqdefault.jpg',
             'status'=> 'published',
             'type'  => 'video'
         ]);

@@ -21,13 +21,13 @@ class HomeController extends Controller
 
         $songs  = Song::orderBy('id')
             ->with('playlist')
-            ->take(2)
+            ->take(4)
             ->get();
 
         $playlists  = PlayList::where('type', 'audio')
             ->with('songs')
             ->orderBy('id')
-            ->take(2)
+            ->take(4)
             ->get();
 
         $videos     = Video::orderBy('id')
