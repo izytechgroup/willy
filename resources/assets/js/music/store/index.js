@@ -12,6 +12,8 @@ export default new Vuex.Store({
         playlist: {
             songs: []
         },
+        isMute: false,
+        isPlaying: false
     },
 
     mutations: {
@@ -26,6 +28,15 @@ export default new Vuex.Store({
 
         SET_PLAYLIST (state, playlist) {
             state.playlist = playlist
+        },
+
+        TOGGLE_PLAY (state) {
+            state.isPlaying = !state.isPlaying
+            eventBus.$emit('player.play', {})
+        },
+
+        TOGGLE_MUTE (state) {
+            state.isMute = !state.isMute
         }
     }
 })

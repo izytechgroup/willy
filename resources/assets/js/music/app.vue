@@ -6,7 +6,8 @@
             enter-active-class="animated fadeIn">
             <router-view></router-view>
         </transition>
-
+        
+        <equalizer></equalizer>
         <willy-mix-player></willy-mix-player>
     </div>
 </template>

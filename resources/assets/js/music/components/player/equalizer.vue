@@ -1,6 +1,9 @@
 <template lang="html">
-    <div class="">
-        <canvas></canvas>
+    <div class="equalizer-container">
+        <div>
+            <canvas></canvas>
+        </div>
+
     </div>
 </template>
 
@@ -11,25 +14,42 @@ export default {
     data () {
         return {
             ids: [],
-            audio: {},
+            audio: new Audio(),
             src: '//willy.dev/mp3/marcher.mp3'
         }
     },
 
     mounted () {
-        console.log('equalizer mounted')
         for (var i = 1; i < 128; i++) {
             this.ids.push(i)
         }
 
         this.initializeEqualizer()
+        const that = this
+        window.eventBus.$on('player.play', function (data) {
+            that.play()
+        })
+
+        window.$('audio').on('ended', function () {
+            console.log('audio has ended...');
+        })
+    },
+
+    computed: {
+        isPlaying () {
+            return this.$store.state.isPlaying
+        }
     },
 
     methods: {
+        play () {
+            this.audio.paused ? this.audio.play() : this.audio.pause()
+        },
+
         initializeEqualizer () {
             let canvas = document.querySelector('canvas')
             let width = canvas.width = canvas.scrollWidth
-            let height = canvas.height = 50
+            let height = canvas.height = canvas.scrollHeight
             let ctx = canvas.getContext('2d')
 
             let context = new AudioContext()
@@ -39,18 +59,14 @@ export default {
             biquadFilter.type = "lowpass"
             biquadFilter.frequency.value = 20000
             biquadFilter.Q.value = 20
+            this.audio.crossOrigin = 'anonymous'
 
-            let audio = new Audio()
-            audio.loop = true
-            audio.crossOrigin = 'anonymous'
-
-            let source = context.createMediaElementSource(audio)
+            let source = context.createMediaElementSource(this.audio)
             source.connect(biquadFilter)
             biquadFilter.connect(analyser)
             analyser.connect(context.destination)
 
-            audio.src = this.src
-            // audio.play()
+            this.audio.src = this.src
 
             const that = this
             let loop = function () {
@@ -83,16 +99,24 @@ export default {
             }
 
             loop()
-
         }
     }
 }
 </script>
 
 <style lang="scss">
-canvas {
+.equalizer-container {
     width: 100%;
-    height: 50px;
-    position: absolute;
+    height: 250px;
+    position: fixed;
+    bottom: 0;
+    z-index:9;
+    margin-bottom: -66px;
+
+    canvas {
+        width: 100%;
+        height: 250px;
+        position: absolute;
+    }
 }
 </style>

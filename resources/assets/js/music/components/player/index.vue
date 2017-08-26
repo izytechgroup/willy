@@ -1,36 +1,35 @@
 <template lang="html">
     <div class="willy-mix-player">
-        <div class="progress">
+        <div class="container">
+            <div class="progress">
 
+            </div>
+
+
+            <div class="controls">
+                <div class="control">
+                    <i class="flaticon-previous-round"></i>
+                </div>
+
+                <div class="control play" v-show="!isPlaying" @click="play()">
+                    <i class="flaticon-play-round"></i>
+                </div>
+
+                <div class="control play" v-show="isPlaying" @click="play()">
+                    <i class="flaticon-pause-round"></i>
+                </div>
+
+                <div class="control">
+                    <i class="flaticon-next-round"></i>
+                </div>
+
+                <div class="control" @click="mute()">
+                    <i class="flaticon-mute" v-show="!isMute"></i>
+                    <i class="flaticon-unmute" v-show="isMute"></i>
+                </div>
+            </div>
         </div>
 
-
-        <div class="controls">
-            <div class="control">
-                <i class="flaticon-left"></i>
-            </div>
-
-            <div class="control play" v-show="!isPlaying" @click="play()">
-                <i class="flaticon-play-round"></i>
-            </div>
-
-            <div class="control play" v-show="isPlaying" @click="play()">
-                <i class="flaticon-pause-round"></i>
-            </div>
-
-            <div class="control">
-                <i class="flaticon-right"></i>
-            </div>
-
-            <div class="control">
-                <i class="flaticon-menu"></i>
-            </div>
-        </div>
-
-
-        <div class="">
-
-        </div>
     </div>
 </template>
 
@@ -40,7 +39,6 @@ export default {
     name: 'willy-mix-player',
     data () {
         return {
-            isPlaying: false,
             isRandom: false,
             isRepeat: false
         }
@@ -48,7 +46,21 @@ export default {
 
     methods: {
         play () {
-            this.isPlaying = !this.isPlaying
+            this.$store.commit('TOGGLE_PLAY')
+        },
+
+        mute () {
+            this.$store.commit('TOGGLE_MUTE')
+        }
+    },
+
+    computed: {
+        isPlaying () {
+            return this.$store.state.isPlaying
+        },
+
+        isMute () {
+            return this.$store.state.isMute
         }
     }
 }
@@ -63,6 +75,7 @@ export default {
     height: 60px;
     margin: 0;
     box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    z-index: 10;
 
     .progress {
         width: 100%;
@@ -78,10 +91,11 @@ export default {
         .control {
             width:30px;
             float: left;
-            font-size: 22px;
+            font-size: 26px;
             cursor: pointer;
             color: #636d7e;
-            margin-top:14px;
+            margin-top:12px;
+            margin-right: 5px;
 
             &.play {
                 font-size: 35px;

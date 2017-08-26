@@ -1,23 +1,15 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
 import router from './music/router'
 import store from './music/store'
 import App from './music/app'
 
+import evento from './plugins/evento'
+Vue.use(evento)
+
 Vue.component('song', require('./music/components/song/song'))
+Vue.component('equalizer', require('./music/components/player/equalizer'))
 Vue.component('willy-mix-player', require('./music/components/player/index'))
 
 const app = new Vue({

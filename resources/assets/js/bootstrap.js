@@ -18,6 +18,7 @@ require('bootstrap-sass');
  */
 
 window.Vue = require('vue')
+window.eventBus = new Vue()
 require('./filters')
 
 /**

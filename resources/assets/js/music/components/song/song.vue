@@ -5,8 +5,9 @@
         </div>
 
         <div class="details">
-            <div class="play">
-                <i class="flaticon-play-round"></i>
+            <div class="play" @click="play()">
+                <i class="flaticon-play-round" v-show="!isPlaying"></i>
+                <i class="flaticon-pause-round" v-show="isPlaying"></i>
             </div>
 
 
@@ -24,7 +25,7 @@
         </div>
 
 
-        <equalizer></equalizer>
+        <!-- <equalizer></equalizer> -->
     </div>
 </template>
 
@@ -35,6 +36,18 @@ export default {
     name: 'song',
     components: {
         equalizer
+    },
+
+    methods: {
+        play () {
+            this.$store.commit('TOGGLE_PLAY')
+        }
+    },
+
+    computed: {
+        isPlaying () {
+            return this.$store.state.isPlaying
+        }
     }
 }
 </script>
