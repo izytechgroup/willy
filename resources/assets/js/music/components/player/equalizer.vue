@@ -10,7 +10,6 @@
 <script>
 export default {
     name: 'equalizer',
-    props: ['song'],
     data () {
         return {
             ids: [],
@@ -38,6 +37,10 @@ export default {
     computed: {
         isPlaying () {
             return this.$store.state.isPlaying
+        },
+
+        song () {
+            return this.$store.state.song
         }
     },
 

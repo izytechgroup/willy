@@ -30,6 +30,10 @@ export default new Vuex.Store({
             state.playlist = playlist
         },
 
+        SET_PLAYLIST_SONG (state, songs) {
+            state.playlist.songs = songs
+        },
+
         TOGGLE_PLAY (state) {
             state.isPlaying = !state.isPlaying
             eventBus.$emit('player.play', {})

@@ -51,8 +51,10 @@
                 <div class="songs">
                     <h4><i class="flaticon-minus"></i> Songs</h4>
 
+                    <loader :loading="isLoadingSong"></loader>
+
                     <div class="list">
-                        <song></song>
+                        <song v-for="s in songs" :key="s.number" :song="s"></song>
                     </div>
                 </div>
             </div>
@@ -62,8 +64,36 @@
 </template>
 
 <script>
+import song from '../../components/audio/song'
 export default {
-    name: 'home'
+    name: 'home',
+    data () {
+        return {
+            isLoadingSong: false,
+            songs: []
+        }
+    },
+
+    components: {
+        song
+    },
+
+    methods: {
+        getSongs () {
+            this.isLoadingSong = true
+            axios.get('/api/front/songs?limit=20')
+            .then((response) => {
+                this.isLoadingSong = false
+                this.songs = response.data
+                console.log(response);
+                this.$store.commit('SET_PLAYLIST_SONG', this.songs)
+            })
+        }
+    },
+
+    mounted () {
+        this.getSongs()
+    }
 }
 </script>
 

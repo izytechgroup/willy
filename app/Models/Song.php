@@ -13,7 +13,11 @@ class Song extends Model
         'title', 'number', 'playlist_id', 'link', 'duration',
         'size', 'plays', 'downloads'
     ];
-    
+
+    public function scopeLatest($q) {
+        return $q->orderBy('id', 'desc');
+    }
+
 
     public function playlist() {
         return $this->belongsTo(Playlist::class);

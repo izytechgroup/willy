@@ -8,7 +8,7 @@ import App from './music/app'
 import evento from './plugins/evento'
 Vue.use(evento)
 
-Vue.component('song', require('./music/components/song/song'))
+Vue.component('loader', require('./music/components/loader/loader'))
 Vue.component('equalizer', require('./music/components/player/equalizer'))
 Vue.component('willy-mix-player', require('./music/components/player/index'))
 

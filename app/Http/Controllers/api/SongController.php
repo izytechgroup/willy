@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use DB;
 use Storage;
 use LaravelMP3;
 use App\Models\Song;
@@ -11,6 +12,30 @@ use Illuminate\Support\Facades\Validator;
 
 class SongController extends Controller
 {
+    public function index (Request $request)
+    {
+        try
+        {
+            $limit = $request->limit ? $request->limit : 20;
+
+            $songs = DB::table('songs')
+            ->when($request->keywords, function ($q) use ($request) {
+                return $q->where('songs.title', 'like', '%'.$request->limit.'%');
+            })
+            ->leftjoin('playlists', 'songs.playlist_id', 'playlists.id')
+            ->where('status', 'published')
+            ->select('songs.title', 'cover', 'duration', 'songs.number', 'link',
+                'size', 'plays', 'downloads', 'playlist_id')
+            ->take($limit)
+            ->orderBy('songs.id', 'desc')
+            ->get();
+
+            return response()->json($songs);
+        }
+        catch (Exception $e) {
+            return response()->json($e->getMessage(), self::HTTP_ERROR);
+        }
+    }
 
     /**
      * [update description]

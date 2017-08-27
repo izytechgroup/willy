@@ -18,6 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+Route::group(['prefix' => 'front'], function () {
+    Route::group(['prefix' => 'songs'], function () {
+        Route::get('/', 'api\SongController@index');
+    });
+});
+
 Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::put('songs', 'api\SongController@update');

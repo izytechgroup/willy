@@ -18,9 +18,9 @@ class SongTableSeeder extends Seeder
             'playlist_id'   => 2,
             'link'          => '/docs/images/audio/playlist1/Eminem_Rap_God.mp3',
             'duration'      => '03:42',
-            'size'          => 3,
-            'plays'         => 58,
-            'downloads'     => 15
+            'size'          => 1024,
+            'plays'         => 90,
+            'downloads'     => 87
         ]);
 
         Song::create([
@@ -29,9 +29,9 @@ class SongTableSeeder extends Seeder
             'playlist_id'   => 3,
             'link'          => '/docs/images/audio/playlist1/Eminem_Rap_God.mp3',
             'duration'      => '05:52',
-            'size'          => 3,
-            'plays'         => 58,
-            'downloads'     => 15
+            'size'          => 1024,
+            'plays'         => 24,
+            'downloads'     => 19
         ]);
 
         Song::create([
@@ -40,7 +40,7 @@ class SongTableSeeder extends Seeder
             'playlist_id'   => 2,
             'link'          => '/docs/images/audio/playlist1/Flux_Pavilion_-_I_Can_T_Stop.mp3',
             'duration'      => '04:21',
-            'size'          => 3,
+            'size'          => 2048,
             'plays'         => 58,
             'downloads'     => 15
         ]);

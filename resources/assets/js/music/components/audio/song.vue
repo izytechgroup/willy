@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="song">
         <div class="cover">
-            <img src="https://static.gigwise.com/gallery/5209864_8262181_JasonDeruloTatGall.jpg" alt="">
+            <img :src="song.cover" alt="">
         </div>
 
         <div class="details">
@@ -12,31 +12,25 @@
 
 
             <div class="title">
-                Bikutsi Mix Non Stop 2017 Lady Ponce Coco Argentee
+                {{ song.title }}
             </div>
 
             <div class="metas">
                 <ul class="list-inline">
-                    <li><i class="flaticon-time"></i> 12:04</li>
-                    <li><i class="flaticon-headphones"></i> 57</li>
-                    <li><i class="flaticon-download"></i> 22</li>
+                    <li><i class="flaticon-time"></i> {{ song.duration }}</li>
+                    <li><i class="flaticon-headphones"></i> {{ song.plays }}</li>
+                    <li><i class="flaticon-download"></i> {{ song.downloads }}</li>
                 </ul>
             </div>
         </div>
-
-
-        <!-- <equalizer></equalizer> -->
     </div>
 </template>
 
 <script>
-import equalizer from '../player/equalizer'
 
 export default {
     name: 'song',
-    components: {
-        equalizer
-    },
+    props: ['song'],
 
     methods: {
         play () {
