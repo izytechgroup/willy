@@ -14,19 +14,25 @@ export default {
         return {
             ids: [],
             audio: new Audio(),
-            src: '//willy.dev/mp3/marcher.mp3'
+            interval: '',
+            src: '/mp3/marcher.mp3'
         }
     },
 
     mounted () {
+        const that = this
         for (var i = 1; i < 128; i++) {
             this.ids.push(i)
         }
 
         this.initializeEqualizer()
-        const that = this
-        window.eventBus.$on('player.play', function (data) {
-            that.play()
+
+        window.eventBus.$on('player.play', function () {
+            that.playTrack()
+        })
+
+        window.eventBus.$on('player.change', function () {
+            that.changeTrack()
         })
 
         window.$('audio').on('ended', function () {
@@ -41,12 +47,40 @@ export default {
 
         song () {
             return this.$store.state.song
+        },
+
+        audioEnded () {
+            return this.audio.ended
         }
     },
 
     methods: {
         play () {
-            this.audio.paused ? this.audio.play() : this.audio.pause()
+            this.$store.commit('TOGGLE_PLAY')
+        },
+
+        playTrack () {
+            if (this.audio.paused) {
+                this.audio.play()
+                this.watchForEnd()
+            } else {
+                this.audio.pause()
+                clearInterval(this.interval)
+            }
+        },
+
+        changeTrack () {
+            this.audio.src = this.song.link
+            this.play()
+        },
+
+        watchForEnd () {
+            this.interval = setInterval(() => {
+                if (this.audio.ended) {
+                    this.$store.dispatch('audioEnded')
+                    clearInterval(this.interval)
+                }
+            }, 1000)
         },
 
         initializeEqualizer () {
@@ -103,6 +137,10 @@ export default {
 
             loop()
         }
+    },
+
+    destroyed () {
+         clearInterval(this.interval)
     }
 }
 </script>

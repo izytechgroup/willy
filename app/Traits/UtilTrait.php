@@ -12,7 +12,7 @@ trait UtilTrait
     {
         if($lastPlayList = PlayList::orderBy('id', 'desc')->first())
         {
-            $number = $lastPlayList->number ++;
+            $number = $lastPlayList->number + rand(1, 5);
         }
         else{
             $number  = 101000;
@@ -24,7 +24,7 @@ trait UtilTrait
     {
         if($lastSong = Song::orderBy('id', 'desc')->first())
         {
-            $number = $lastSong->number ++;
+            $number = $lastSong->number + rand(1, 5);
         }
         else{
             $number  = 1010000;

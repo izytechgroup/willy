@@ -34,13 +34,17 @@ export default {
 
     methods: {
         play () {
-            this.$store.commit('TOGGLE_PLAY')
+            this.$store.commit('PLAY_SONG', this.song)
         }
     },
 
     computed: {
         isPlaying () {
-            return this.$store.state.isPlaying
+            return this.$store.state.isPlaying && this.currentTrack.number == this.song.number
+        },
+
+        currentTrack () {
+            return this.$store.state.song
         }
     }
 }
