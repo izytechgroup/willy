@@ -35,13 +35,11 @@ export default new Vuex.Store({
         },
 
         TOGGLE_PLAY (state) {
-            console.log('Toggle Play');
             state.isPlaying = !state.isPlaying
             eventBus.$emit('player.play', {})
         },
 
         PLAY_SONG (state, song) {
-            console.log(' Play song');
             if (state.song.number !== song.number) {
                 state.song = song
                 eventBus.$emit('player.change', {})
@@ -53,7 +51,6 @@ export default new Vuex.Store({
         },
 
         STOP_PLAYING (state) {
-            console.log('Stopping the play...');
             state.isPlaying = false
         },
 
@@ -64,7 +61,6 @@ export default new Vuex.Store({
 
     actions: {
         audioEnded ({ commit, state }) {
-            console.log('audio ended...');
             if (state.playlist.songs.length > 0) {
                 let found = false
                 for (var i = 0; i < state.playlist.songs.length; i++) {
