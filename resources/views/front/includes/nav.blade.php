@@ -12,7 +12,7 @@
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
             <li class="{{ Request::is('audio*') ? 'selected' : '' }}"><a href="/audio">Audio</a></li>
-            <li><a href="/videos">Videos</a></li>
+            <li class="{{ Request::is('videos*') ? 'selected' : '' }}"><a href="/videos">Videos</a></li>
             <li><a href="/events">Events</a></li>
             <li><a href="/location">Location</a></li>
             <li><a href="/academie">Académie</a></li>

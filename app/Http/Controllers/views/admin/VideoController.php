@@ -137,12 +137,10 @@ class VideoController extends Controller
         {
             $validator = Validator::make($request->all(), [
                 'title'     => 'required',
-                'slug'      => 'required',
                 'origin_id' => 'required'
             ]);
 
             if($validator->fails()) {
-                return $request->all();
                 return redirect()->back()->withErrors(['validator' => 'Bien vouloir preciser tous les champs']);
             }
 
