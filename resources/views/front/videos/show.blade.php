@@ -1,4 +1,4 @@
-@extends('front.templates.app.body')
+@extends('front.templates.pages.default')
 
 @section('head')
     <title>{{ $video->title }} | Willy Mix</title>

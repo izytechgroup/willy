@@ -10,9 +10,12 @@
         <link rel="icon" type="image/png"  href="/favicon.ico">
         <title>Willy Mix</title>
         @include('front.includes.favicons')
+        <script>
+            var _auth = <?php echo json_encode(Auth::check() ? Auth::user()->api_token : '');?>;
+        </script>
     </head>
     <body>
-        <div class="home">
+        <div class="home" id="app">
 
             <section class="home-top">
                 <div class="container">
@@ -228,5 +231,6 @@
 
 
         @include('front.includes.footer')
+        <script src="/assets/js/app.min.js"></script>
     </body>
 </html>

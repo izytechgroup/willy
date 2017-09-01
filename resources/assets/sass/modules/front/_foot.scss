@@ -1,8 +1,47 @@
 footer {
     width: 100%;
-    background-color: white;
-    height: 60px;
+    background-color: $color-dark;
+    margin-top: 80px;
+    height: auto;
     padding-top: 20px;
+    font-family: 'Source Sans Pro', 'Open Sans', sans-serif;
 
-    a {color: red;}
+    a {color: #eee;}
+
+    .menu {
+
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    .logo {
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .play {
+        color: #aaa;
+        font-size: 20px;
+        text-align: center;
+        font-style: italic;
+        margin-top:20px;
+    }
+
+    .sociaux {
+        width: 300px;
+        margin: 40px auto;
+        font-size: 50px;
+        text-align: center;
+        margin-top:60px;
+        a {color: red;}
+    }
+
+    .foot {
+        background-color: #000;
+        color: #aaa;
+        width: 100%;
+        padding-top:30px;
+        height: 80px;
+    }
+
 }
