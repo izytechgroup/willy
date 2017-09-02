@@ -37,13 +37,20 @@ class VideoController extends Controller
                 return redirect()->route('videos.all');
             }
 
-            $videos = Video::canDisplay()
-            ->latest()
+            $playlist = Video::canDisplay()
+            ->where('playlist_id', $video->playlist_id)
             ->different($number)
-            ->take(4)
+            ->latest()
+            ->take(6)
             ->get();
 
-            return view('front.videos.show', compact('video', 'videos'));
+            $videos = Video::canDisplay()
+            ->latest()
+            ->where('playlist_id', '!=', $video->playlist_id)
+            ->take(12)
+            ->get();
+
+            return view('front.videos.show', compact('video', 'videos', 'playlist'));
         }
         catch (Exception $e) {
             return redirect()->back()->withErrors($e);
