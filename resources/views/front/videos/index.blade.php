@@ -16,7 +16,7 @@
                                 <input type="text" name="keywords"
                                     value="{{ Request::get('keywords') }}"
                                     class="form-control input-lg"
-                                    placeholder="Rechercer une video"
+                                    placeholder="Rechercher une video"
                                     required>
                             </div>
                         </div>

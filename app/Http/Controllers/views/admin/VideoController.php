@@ -28,6 +28,7 @@ class VideoController extends Controller
             }
 
             $keywords = $request->keywords;
+
             $videos = Video::when($keywords, function($query) use ($keywords) {
                 return $query->where('title', 'like', '%'.$keywords.'%');
             })
@@ -35,7 +36,7 @@ class VideoController extends Controller
                 return $query->where('status', $status);
             })
             ->orderBy('id', 'desc')
-            ->paginate(50);
+            ->paginate(20);
 
             return view('admin.videos.index', ['videos' => $videos]);
         }
@@ -108,11 +109,24 @@ class VideoController extends Controller
                 $number = $lastVideo->number += rand(19,97);
             }
 
+            $thumbnail = null;
+
+            if ($request->origin === 'vimeo') {
+                $resJson = $this->getVimeoImage($request->origin_id);
+                if ($resJson)
+                    $thumbnail = $resJson['thumbnail_large'];
+            }
+            else {
+                // Youtube
+                $thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+            }
+
             $video = Video::create([
                 'title' => $request->title,
                 'status' => $request->status,
                 'origin' => $request->origin,
                 'number' => $number,
+                'thumbnail' => $thumbnail,
                 'origin_id' => $request->origin_id,
                 'playlist_id' => $request->playlist_id
             ]);
