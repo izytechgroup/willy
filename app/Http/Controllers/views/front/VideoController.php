@@ -13,8 +13,22 @@ class VideoController extends Controller
     {
         try
         {
-            $videos = Video::canDisplay()
-            ->latest()
+            $status = null;
+            if ( $request->has('status') && $request->status != '' ) {
+                if ( in_array($request->status, ['published', 'unpublished']) ) {
+                    $status = $request->status;
+                }
+            }
+
+            $keywords = $request->keywords;
+
+            $videos = Video::when($keywords, function($query) use ($keywords) {
+                return $query->where('title', 'like', '%'.$keywords.'%');
+            })
+            ->when($status, function($query) use ($status) {
+                return $query->where('status', $status);
+            })
+            ->orderBy('id', 'desc')
             ->paginate(24);
 
             return view('front.videos.index', compact('videos'));

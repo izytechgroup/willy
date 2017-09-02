@@ -28,6 +28,7 @@ class VideoController extends Controller
             }
 
             $keywords = $request->keywords;
+
             $videos = Video::when($keywords, function($query) use ($keywords) {
                 return $query->where('title', 'like', '%'.$keywords.'%');
             })
@@ -35,7 +36,7 @@ class VideoController extends Controller
                 return $query->where('status', $status);
             })
             ->orderBy('id', 'desc')
-            ->paginate(50);
+            ->paginate(20);
 
             return view('admin.videos.index', ['videos' => $videos]);
         }
@@ -108,11 +109,24 @@ class VideoController extends Controller
                 $number = $lastVideo->number += rand(19,97);
             }
 
+            $thumbnail = null;
+
+            if ($request->origin === 'vimeo') {
+                $resJson = $this->getVimeoImage($request->origin_id);
+                if ($resJson)
+                    $thumbnail = $resJson['thumbnail_large'];
+            }
+            else {
+                // Youtube
+                $thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+            }
+
             $video = Video::create([
                 'title' => $request->title,
                 'status' => $request->status,
                 'origin' => $request->origin,
                 'number' => $number,
+                'thumbnail' => $thumbnail,
                 'origin_id' => $request->origin_id,
                 'playlist_id' => $request->playlist_id
             ]);
@@ -149,6 +163,19 @@ class VideoController extends Controller
                 return redirect()->route('videos.index');
             }
 
+            if ($request->origin === 'vimeo') {
+                if ( $video->thumbnail == null){
+                    // Get image
+                    $resJson = $this->getVimeoImage($request->origin_id);
+                    if ($resJson)
+                        $video->thumbnail = $resJson['thumbnail_large'];
+                }
+            }
+            else {
+                // Youtube
+                $video->thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+            }
+
             $video->title = $request->title;
             $video->playlist_id = $request->playlist_id;
             $video->origin_id = $request->origin_id;
@@ -161,5 +188,24 @@ class VideoController extends Controller
         catch (Exception $e) {
             return redirect()->back()->withErrors($e);
         }
+    }
+
+    /**
+     * [getVimeoImage description]
+     * @param  [type] $video_id [description]
+     * @return [type]           [description]
+     */
+    private function getVimeoImage($video_id){
+        if (!function_exists('curl_init'))
+            return redirect()->back()->with('message', 'CURL is not installed!');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://vimeo.com/api/v2/video/".$video_id.".php");
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $output = unserialize(curl_exec($ch));
+        $output = $output[0];
+        curl_close($ch);
+        return $output;
     }
 }

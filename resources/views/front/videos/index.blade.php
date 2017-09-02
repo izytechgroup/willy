@@ -16,7 +16,7 @@
                                 <input type="text" name="keywords"
                                     value="{{ Request::get('keywords') }}"
                                     class="form-control input-lg"
-                                    placeholder="Rechercer une video"
+                                    placeholder="Rechercher une video"
                                     required>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                 <div class="play">
                                     <img src="/assets/img/play.png" alt="">
                                 </div>
-                                <img src="https://img.{{ $video->origin }}.com/vi/{{ $video->origin_id }}/mqdefault.jpg" class="img-responsive">
+                                <img src="{{ $video->thumbnail }}" class="img-responsive">
                                 <div class="title">
                                     {{ strtolower($video->title ) }}
                                 </div>

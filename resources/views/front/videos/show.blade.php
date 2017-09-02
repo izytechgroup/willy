@@ -59,7 +59,7 @@
 
         <div class="videos mt-40">
             <h4>Autres Videos</h4>
-            
+
             <div class="row">
                 @foreach ($videos as $video)
                     <div class="col-sm-3">
