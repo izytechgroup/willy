@@ -149,6 +149,19 @@ class VideoController extends Controller
                 return redirect()->route('videos.index');
             }
 
+            if ($request->origin === 'vimeo') {
+                if ( $video->thumbnail == null){
+                    // Get image
+                    $resJson = $this->getVimeoImage($request->origin_id);
+                    if ($resJson)
+                        $video->thumbnail = $resJson['thumbnail_large'];
+                }
+            }
+            else {
+                // Youtube
+                $video->thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+            }
+
             $video->title = $request->title;
             $video->playlist_id = $request->playlist_id;
             $video->origin_id = $request->origin_id;
@@ -161,5 +174,24 @@ class VideoController extends Controller
         catch (Exception $e) {
             return redirect()->back()->withErrors($e);
         }
+    }
+
+    /**
+     * [getVimeoImage description]
+     * @param  [type] $video_id [description]
+     * @return [type]           [description]
+     */
+    private function getVimeoImage($video_id){
+        if (!function_exists('curl_init'))
+            return redirect()->back()->with('message', 'CURL is not installed!');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://vimeo.com/api/v2/video/".$video_id.".php");
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $output = unserialize(curl_exec($ch));
+        $output = $output[0];
+        curl_close($ch);
+        return $output;
     }
 }

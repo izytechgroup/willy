@@ -20,6 +20,7 @@ class CreateVideosTable extends Migration
             $table->integer('number')->index();
             $table->enum('status', ['published', 'unpublished'])->default('published');
             $table->enum('origin', ['youtube', 'vimeo'])->default('youtube');
+            $table->string('thumbnail')->nullable();
             $table->string('origin_id');
             $table->timestamps();
         });

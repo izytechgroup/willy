@@ -47,7 +47,7 @@
                                     <div class="play">
                                         <img src="/assets/img/play.png" alt="">
                                     </div>
-                                    <img src="https://img.{{ $video->origin }}.com/vi/{{ $video->origin_id }}/mqdefault.jpg">
+                                    <img src="{{ $video->thumbnail}}">
                                     <div class="title">
                                         {{ strtolower($video->title ) }}
                                     </div>
