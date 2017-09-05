@@ -22,6 +22,10 @@ Route::group(['prefix' => 'front'], function () {
     Route::group(['prefix' => 'songs'], function () {
         Route::get('/', 'api\SongController@index');
     });
+
+    Route::group(['prefix' => 'playlists'], function () {
+        Route::get('/', 'api\PlaylistController@index');
+    });
 });
 
 Route::group(['middleware' => 'auth:api'], function () {

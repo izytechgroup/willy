@@ -7,7 +7,7 @@
 
 
             <div class="controls">
-                <div class="control">
+                <div class="control" @click="previous()">
                     <i class="flaticon-previous-round"></i>
                 </div>
 
@@ -19,7 +19,7 @@
                     <i class="flaticon-pause-round"></i>
                 </div>
 
-                <div class="control">
+                <div class="control" @click="next()">
                     <i class="flaticon-next-round"></i>
                 </div>
 
@@ -51,6 +51,14 @@ export default {
 
         mute () {
             this.$store.commit('TOGGLE_MUTE')
+        },
+
+        next () {
+            this.$store.dispatch('playNext')
+        },
+
+        previous () {
+            this.$store.dispatch('playPrevious')
         }
     },
 

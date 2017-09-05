@@ -14,8 +14,7 @@ export default {
         return {
             ids: [],
             audio: new Audio(),
-            interval: '',
-            src: '/mp3/marcher.mp3'
+            interval: ''
         }
     },
 
@@ -25,14 +24,22 @@ export default {
             this.ids.push(i)
         }
 
-        this.initializeEqualizer()
+
 
         window.eventBus.$on('player.play', function () {
             that.playTrack()
         })
 
+        window.eventBus.$on('player.set', function () {
+            that.initializeEqualizer()
+        })
+
         window.eventBus.$on('player.change', function () {
             that.changeTrack()
+        })
+
+        window.eventBus.$on('player.stop', function () {
+            that.stopPlayer()
         })
 
         window.$('audio').on('ended', function () {
@@ -51,6 +58,10 @@ export default {
 
         audioEnded () {
             return this.audio.ended
+        },
+
+        src () {
+            return this.$store.state.song.link
         }
     },
 
@@ -72,6 +83,10 @@ export default {
         changeTrack () {
             this.audio.src = this.song.link
             this.play()
+        },
+
+        stopPlayer () {
+            this.audio.pause()
         },
 
         watchForEnd () {
