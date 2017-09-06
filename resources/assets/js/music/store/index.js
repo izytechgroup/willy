@@ -14,7 +14,9 @@ export default new Vuex.Store({
             songs: []
         },
         isMute: false,
-        isPlaying: false
+        isPlaying: false,
+        elapsed: 0,
+        duration: 0,
     },
 
     mutations: {
@@ -87,6 +89,15 @@ export default new Vuex.Store({
 
         TOGGLE_MUTE (state) {
             state.isMute = !state.isMute
+            eventBus.$emit('player.mute', {})
+        },
+
+        UPDATE_ELAPSED (state, position) {
+            state.elapsed = position
+        },
+
+        TRACK_DURATION (state, duration) {
+            state.duration = duration
         }
     },
 

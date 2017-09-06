@@ -1,11 +1,6 @@
 <template lang="html">
     <div class="willy-mix-player">
         <div class="container">
-            <div class="progress">
-
-            </div>
-
-
             <div class="controls">
                 <div class="control" @click="previous()">
                     <i class="flaticon-previous-round"></i>
@@ -24,8 +19,20 @@
                 </div>
 
                 <div class="control" @click="mute()">
-                    <i class="flaticon-mute" v-show="!isMute"></i>
-                    <i class="flaticon-unmute" v-show="isMute"></i>
+                    <i class="flaticon-mute" v-show="isMute"></i>
+                    <i class="flaticon-unmute" v-show="!isMute"></i>
+                </div>
+            </div>
+
+            <div class="cover">
+                <img :src="song.cover" alt="">
+            </div>
+
+            <div class="progress">
+                <div class="current" :style="'width:' + current + '%'"></div>
+                <div class="infos">
+                    <div class="title">{{ song.title }}</div>
+                    <div class="time">{{ elapsed | duration }} - {{ duration | duration }}</div>
                 </div>
             </div>
         </div>
@@ -69,7 +76,31 @@ export default {
 
         isMute () {
             return this.$store.state.isMute
+        },
+
+        song () {
+            return this.$store.state.song
+        },
+
+        elapsed () {
+            return this.$store.state.elapsed
+        },
+
+        duration () {
+            return this.$store.state.duration
+        },
+
+        current () {
+            return this.elapsed / this.duration * 100
         }
+    },
+
+    mounted () {
+        $('.progress').on('click', function(e) {
+            var barX = e.pageX - this.offsetLeft
+            var percent = $(this).width() / (barX);
+            eventBus.$emit('player.seek', percent)
+        });
     }
 }
 </script>
@@ -82,17 +113,43 @@ export default {
     bottom: 0;
     height: 60px;
     margin: 0;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
     z-index: 10;
 
     .progress {
-        width: 100%;
-        height: 2px;
+        display: block;
+        margin-left:230px;
+        height: 60px;
         background-color: #fff;
+        cursor: pointer;
+        position: relative;
+
+        .current {
+            position: absolute;
+            background-color: rgba(0,0,0,0.12);
+            height: 60px;
+        }
+
+        .infos {
+            width: 100%;
+            text-align: center;
+            font-family: 'Source Sans Pro', 'Open Sans';
+            padding-top: 10px;
+
+            .title {
+                font-size: 16px;
+                font-weight: 400;
+            }
+            .time {
+                font-size: 14px;
+                color: #636d7e;
+                font-weight: 400;
+            }
+        }
     }
 
     .controls {
-        width: 250px;
+        width: 170px;
         float: left;
         padding: 1px 10px;
 
@@ -102,18 +159,28 @@ export default {
             font-size: 26px;
             cursor: pointer;
             color: #636d7e;
-            margin-top:12px;
+            margin-top:8px;
             margin-right: 5px;
 
             &.play {
                 font-size: 35px;
                 width: 40px;
-                margin-top: 5px;
+                margin-top: 2px;
             }
 
             &.active {
                 color: red;
             }
+        }
+    }
+
+    .cover {
+        width:60px;
+        height: 60px;
+        float: left;
+
+        img {
+            width: 100%;
         }
     }
 }

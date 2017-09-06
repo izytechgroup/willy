@@ -7,6 +7,7 @@ use App\Traits\SlugTrait;
 use App\Traits\UtilTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class SongPlaylistController extends Controller
 {
@@ -40,13 +41,51 @@ class SongPlaylistController extends Controller
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'cover'  => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors(['validator' => 'Bien vouloir preciser le titre et la couverture']);
+        }
+
         $playlist = Playlist::create([
             'title'     => $request->title,
             'cover'     => $request->cover,
             'status'    => $request->status,
-            'number'    => $this->makePlaylistNumber()
+            'number'    => $this->makePlaylistNumber(),
+            'cover_md'  => str_replace('/images//', '/md//', $request->cover),
+            'cover_sm'  => str_replace('/images//', '/sm//', $request->cover)
         ]);
 
         return redirect()->route('audio.playlist.edit', $playlist->id);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $playlist = Playlist::find($id);
+        if (!$playlist) {
+            return redirect()->back();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'cover'  => 'required'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors(['validator' => 'Bien vouloir preciser le titre et la couverture']);
+        }
+
+        $playlist->title = $request->title;
+        $playlist->cover = $request->cover;
+        $playlist->cover_md = str_replace('/images//', '/md//', $request->cover);
+        $playlist->cover_sm = str_replace('/images//', '/sm//', $request->cover);
+        $playlist->save();
+
+        return redirect()->route('audio.playlist.edit', $playlist->id)
+        ->with('message', 'Playlist mise à jour');
     }
 }

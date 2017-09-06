@@ -14,7 +14,8 @@ export default {
         return {
             ids: [],
             audio: new Audio(),
-            interval: ''
+            interval: '',
+            elapsedInterval: ''
         }
     },
 
@@ -23,8 +24,6 @@ export default {
         for (var i = 1; i < 128; i++) {
             this.ids.push(i)
         }
-
-
 
         window.eventBus.$on('player.play', function () {
             that.playTrack()
@@ -42,8 +41,12 @@ export default {
             that.stopPlayer()
         })
 
-        window.$('audio').on('ended', function () {
-            console.log('audio has ended...');
+        window.eventBus.$on('player.mute', function () {
+            that.mutePlayer()
+        })
+
+        window.eventBus.$on('player.seek', function (percent) {
+            that.seek(percent)
         })
     },
 
@@ -74,14 +77,23 @@ export default {
             if (this.audio.paused) {
                 this.audio.play()
                 this.watchForEnd()
+                this.updateDuration()
+                // this.$store.commit('TRACK_DURATION', this.audio.duration)
+                let that = this
+                this.audio.addEventListener("loadeddata", function() {
+                    that.$store.commit('TRACK_DURATION', that.audio.duration)
+                })
             } else {
                 this.audio.pause()
                 clearInterval(this.interval)
+                clearInterval(this.elapsedInterval)
             }
         },
 
         changeTrack () {
             this.audio.src = this.song.link
+
+
             this.play()
         },
 
@@ -89,11 +101,29 @@ export default {
             this.audio.pause()
         },
 
+        mutePlayer () {
+            this.audio.muted = this.$store.state.isMute
+        },
+
+        seek (percent) {
+            this.audio.currentTime = this.audio.duration / percent
+            this.$store.commit('UPDATE_ELAPSED', this.audio.currentTime)
+        },
+
         watchForEnd () {
             this.interval = setInterval(() => {
                 if (this.audio.ended) {
                     this.$store.dispatch('audioEnded')
                     clearInterval(this.interval)
+                }
+            }, 1000)
+        },
+
+        updateDuration () {
+            this.elapsedInterval = setInterval(() => {
+                this.$store.commit('UPDATE_ELAPSED', this.audio.currentTime)
+                if (this.audio.ended) {
+                    clearInterval(this.elapsedInterval)
                 }
             }, 1000)
         },
@@ -121,6 +151,10 @@ export default {
             this.audio.src = this.src
 
             const that = this
+            this.audio.addEventListener("loadeddata", function() {
+                that.$store.commit('TRACK_DURATION', that.audio.duration)
+            })
+
             let loop = function () {
                 window.requestAnimationFrame(loop)
                 let freq = new Uint8Array(analyser.frequencyBinCount)
@@ -156,6 +190,7 @@ export default {
 
     destroyed () {
          clearInterval(this.interval)
+         clearInterval(this.elapsedInterval)
     }
 }
 </script>

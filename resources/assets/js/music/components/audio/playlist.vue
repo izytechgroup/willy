@@ -8,10 +8,10 @@
             <h5><a href="">{{ playlist.title }}</a></h5>
 
             <ul class="list-unstyled">
-                <li><i class="flaticon-sound"></i> {{ playlist.songs_count }} Titres</li>
+                <li><i class="flaticon-sound"></i> {{ playlist.songs_count }} Titre{{ hasMany ? 's': '' }}</li>
                 <li>
                     <a href="">
-                        <i class="flaticon-play-2"></i> Lire Tout
+                        <i class="flaticon-playlist"></i> Afficher la playlist
                     </a>
                 </li>
             </ul>
@@ -22,9 +22,12 @@
 <script>
 export default {
     name: 'playlist',
-    props: ['playlist']
+    props: ['playlist'],
+
+    computed: {
+        hasMany () {
+            return this.playlist.songs_count > 1
+        }
+    }
 }
 </script>
-
-<style lang="scss" scoped>
-</style>

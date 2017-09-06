@@ -18,6 +18,8 @@ class CreatePlaylistsTable extends Migration
             $table->string('title');
             $table->integer('number');
             $table->string('cover')->nullable();
+            $table->string('cover_md')->nullable();
+            $table->string('cover_sm')->nullable();
             $table->enum('type', ['audio', 'video'])->default('audio');
             $table->enum('status', ['published', 'unpublished'])->default('unpublished');
             $table->timestamps();

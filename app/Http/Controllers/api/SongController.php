@@ -25,7 +25,7 @@ class SongController extends Controller
             ->leftjoin('playlists', 'songs.playlist_id', 'playlists.id')
             ->where('status', 'published')
             ->select('songs.title', 'cover', 'duration', 'songs.number', 'link',
-                'size', 'plays', 'downloads', 'playlist_id')
+                'size', 'plays', 'downloads', 'playlist_id', 'playlists.title as playlist_title')
             ->take($limit)
             ->orderBy('songs.id', 'desc')
             ->get();

@@ -14,12 +14,12 @@
 
             .item {
                 background-color: white;
-                box-shadow: 1px 2px 3px rgba(0,0,0,0.15);
-                height: 100px;
-                margin-bottom: 20px;
+                box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+                height: 80px;
+                margin-bottom: 10px;
 
                 img {
-                    width: 100px;
+                    width: 80px;
                     float: left;
                     margin-right: 10px;
                 }
@@ -28,6 +28,8 @@
                     a{color: red;}
                     font-weight: 500;
                     font-size: 16px;
+                    margin: 0;
+                    margin-bottom: 5px;
                 }
 
                 .details {
@@ -39,7 +41,7 @@
 
                     li a {
                         color: $color-dark;
-                        font-size: 15px;
+                        font-size: 14px;
                     }
                 }
             }
@@ -57,7 +59,7 @@
                 background-color: white;
                 padding: 10px;
                 box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.055);
-                margin-bottom: 40px;
+                margin-bottom: 30px;
                 border-radius: 2px;
 
                 .cover {
@@ -66,10 +68,10 @@
                     float: left;
                     margin-right: 10px;
                     margin-top: -20px;
-                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 
                     img {
                         width: 120px;
+                        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
                     }
                 }
 

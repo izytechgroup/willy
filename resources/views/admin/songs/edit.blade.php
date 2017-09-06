@@ -22,7 +22,7 @@
         <div class="container-fluid">
             @include('errors.list')
 
-            {!! Form::model($playlist, ['method' => 'PATCH', 'route' => ['audio.playlist.update', $playlist->id], 'class' => 'form' ]) !!}
+            {!! Form::model($playlist, ['method' => 'PUT', 'route' => ['audio.playlist.update', $playlist->id], 'class' => 'form' ]) !!}
             {{-- Left side  --}}
             <div class="row">
                 <div class="col-sm-8">
@@ -33,13 +33,6 @@
                                     'class' => 'form-control input-lg',
                                     'required' => 'required',
                                     'placeholder' => 'Page title']) !!}
-                            </div>
-
-                            <div class="form-group">
-                                {!! Form::text('slug', null, [
-                                    'class' => 'form-control input-lg',
-                                    'required' => 'required',
-                                    'disabled' => 'disabled']) !!}
                             </div>
                         </div>
                     </div>
