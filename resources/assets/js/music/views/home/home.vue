@@ -2,13 +2,44 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <div class="playlists">
-                    <h4><i class="flaticon-minus"></i> Playlists</h4>
+                <div class="left-side">
+                    <div class="playlists">
+                        <h4><i class="flaticon-minus"></i> Playlists</h4>
 
-                    <div class="items">
-                        <playlist v-for="p in playlists" :key="p.id" :playlist="p"></playlist>
+                        <div class="items">
+                            <playlist v-for="p in playlists" :key="p.id" :playlist="p"></playlist>
+                        </div>
+                    </div>
+
+                    <div class="menu">
+                        <ul class="list-inline">
+                             <li>
+                                 <a href="">
+                                     Aide
+                                 </a>
+                             </li>
+
+                             <li>
+                                 <a href="">
+                                     Biomédical
+                                 </a>
+                             </li>
+
+                             <li>
+                                 <a href="">
+                                     Contact
+                                 </a>
+                             </li>
+
+                             <li>
+                                 <a href="">
+                                     Conditions
+                                 </a>
+                             </li>
+                        </ul>
                     </div>
                 </div>
+
             </div>
 
             <div class="col-sm-8">
@@ -73,5 +104,16 @@ export default {
 </script>
 
 <style lang="scss">
+.menu {
+    border-top: 1px solid #ddd;
+    margin-top:40px;
+    padding-top: 10px;
+    font-family: 'Open Sans', 'Source Sans Pro';
 
+    a {
+        color: #aaa;
+        font-weight: 400;
+        font-size: 13px;
+    }
+}
 </style>
