@@ -139,6 +139,10 @@ export default {
             .title {
                 font-size: 16px;
                 font-weight: 400;
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             .time {
                 font-size: 14px;

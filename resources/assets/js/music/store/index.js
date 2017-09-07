@@ -13,10 +13,12 @@ export default new Vuex.Store({
         playlist: {
             songs: []
         },
-        isMute: false,
-        isPlaying: false,
         elapsed: 0,
         duration: 0,
+        isMute: false,
+        isPlaying: false,
+        isLoadingSong: false,
+        isLoadingPlaylist: false
     },
 
     mutations: {
@@ -98,7 +100,15 @@ export default new Vuex.Store({
 
         TRACK_DURATION (state, duration) {
             state.duration = duration
-        }
+        },
+
+        LOADING_SONG (state) {
+            state.isLoadingSong != state.isLoadingSong
+        },
+
+        LOADING_PLAYLISTS (state) {
+            state.isLoadingPlaylist != state.isLoadingPlaylist
+        },
     },
 
     actions: {
