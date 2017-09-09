@@ -18,4 +18,6 @@ class Controller extends BaseController
     const HTTP_UNAUTHORIZED = 401;
     const HTTP_NOTFOUND     = 404;
     const HTTP_ERROR        = 500;
+
+    const PAGINATE_NB       = 20;
 }
