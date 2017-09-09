@@ -48,7 +48,7 @@
 
                             <div class="songs">
                                 @foreach ($songs as $song)
-                                    <a href="">
+                                    <a href="/audio#/song/{{ $song->number }}">
                                         <div class="song">
                                             <div class="cover">
                                                 <img src="{{ $song->playlist->cover }}" alt="" class="img-responsive">
