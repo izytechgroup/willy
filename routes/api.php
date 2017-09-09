@@ -21,10 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'front'], function () {
     Route::group(['prefix' => 'songs'], function () {
         Route::get('/', 'api\SongController@index');
+        Route::get('{number}', 'api\SongController@show');
+        Route::get('{number}/increment', 'api\SongController@increment');
     });
 
     Route::group(['prefix' => 'playlists'], function () {
         Route::get('/', 'api\PlaylistController@index');
+        Route::get('{number}', 'api\PlaylistController@show');
     });
 });
 

@@ -25,14 +25,14 @@
             </div>
 
             <div class="buttons">
-                <a href="" class="btn btn-red">
+                <button class="btn btn-red" @click="download()">
                     <i class="flaticon-download"></i> Télécharger
-                </a>
+                </button>
 
-                <a href="" class="btn btn-dark">
+                <button class="btn btn-dark" @click="open()">
                     <i class="flaticon-redo"></i>
                     Afficher
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -47,6 +47,20 @@ export default {
     methods: {
         play () {
             this.$store.commit('PLAY_SONG', this.song)
+        },
+
+        download () {
+            let url = '/songs/' + this.song.number + '/downloads/'
+            window.open(url, '_blank');
+        },
+
+        open () {
+            this.$router.push({
+                name: 'song',
+                params: {
+                    id: this.song.number
+                }
+            })
         }
     },
 

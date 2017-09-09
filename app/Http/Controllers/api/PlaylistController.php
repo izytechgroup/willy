@@ -25,4 +25,24 @@ class PlaylistController extends Controller
         }
 
     }
+
+    public function show($number)
+    {
+        try
+        {
+            $result = Playlist::canDisplay()
+            ->where('number', $number)
+            ->with('songs')
+            ->first();
+
+            if ( !$result ) {
+                return response()->json('La playlist n\'existe pas', self::HTTP_NOTFOUND);
+            }
+
+            return response()->json($result);
+        }
+        catch (Exception $e) {
+            return response()->json($e->getMessage(), self::HTTP_ERROR);
+        }
+    }
 }

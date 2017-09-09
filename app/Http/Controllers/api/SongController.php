@@ -38,6 +38,41 @@ class SongController extends Controller
     }
 
     /**
+     * [show description]
+     * @param  [type] $number [description]
+     * @return [type]         [description]
+     */
+    public function show ($number)
+    {
+        try
+        {
+
+            $songs = DB::table('songs')
+            ->leftjoin('playlists', 'songs.playlist_id', 'playlists.id')
+            ->where('status', '=', 'published')
+            ->where('songs.number', '=', $number)
+            ->select('songs.title', 'cover', 'duration', 'songs.number', 'link',
+                'size', 'plays', 'downloads', 'playlist_id', 'playlists.title as playlist_title')
+            ->first();
+
+            return response()->json($songs);
+        }
+        catch (Exception $e) {
+            return response()->json($e->getMessage(), self::HTTP_ERROR);
+        }
+    }
+
+
+    public function increment($number)
+    {
+        DB::table('songs')
+        ->where('number', '=', $number)
+        ->increment('plays');
+
+        return response()->json('Incremented');;
+    }
+
+    /**
      * [update description]
      * @param  Request $request [description]
      * @param  [type]  $id      [description]
@@ -76,5 +111,23 @@ class SongController extends Controller
         catch (Exception $e) {
             return response()->json($e->getMessage(), self::HTTP_ERROR);
         }
+    }
+
+
+    public function downloads ($number)
+    {
+        try
+        {
+            $song = Song::where('number', $number)->first();
+            $file = public_path() . $song->link;
+            $song->downloads = $song->downloads + 1;
+            $song->save();
+            
+            return response()->download($file, $song->title . '.mp3');
+        }
+        catch (Exception $e) {
+            return response()->json($e->getMessage(), self::HTTP_ERROR);
+        }
+
     }
 }

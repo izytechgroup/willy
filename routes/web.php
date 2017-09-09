@@ -21,3 +21,6 @@ Route::group(['prefix' => 'videos'], function () {
     Route::get('/', 'views\front\VideoController@index')->name('videos.all');
     Route::get('{number}', 'views\front\VideoController@show')->name('videos.one');
 });
+Route::group(['prefix' => 'songs'], function () {
+    Route::get('{number}/downloads', 'api\SongController@downloads');
+});

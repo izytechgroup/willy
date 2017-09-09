@@ -48,6 +48,10 @@ export default {
         window.eventBus.$on('player.seek', function (percent) {
             that.seek(percent)
         })
+
+        window.eventBus.$on('player.increment', function () {
+            that.incrementPlays()
+        })
     },
 
     computed: {
@@ -78,7 +82,7 @@ export default {
                 this.audio.play()
                 this.watchForEnd()
                 this.updateDuration()
-                // this.$store.commit('TRACK_DURATION', this.audio.duration)
+
                 let that = this
                 this.audio.addEventListener("loadeddata", function() {
                     that.$store.commit('TRACK_DURATION', that.audio.duration)
@@ -126,6 +130,10 @@ export default {
                     clearInterval(this.elapsedInterval)
                 }
             }, 1000)
+        },
+
+        incrementPlays () {
+            axios.get('/api/front/songs/' + this.$store.state.song.number + '/increment')
         },
 
         initializeEqualizer () {

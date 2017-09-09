@@ -1,22 +1,19 @@
 <template lang="html">
-    <div class="item">
-        <a href="">
+    <router-link :to="{ name: 'playlist', params: { id: playlist.number }}">
+        <div class="item">
             <img :src="playlist.cover">
-        </a>
+            <div class="details">
+                <h5>{{ playlist.title }}</h5>
 
-        <div class="details">
-            <h5><a href="">{{ playlist.title }}</a></h5>
-
-            <ul class="list-unstyled">
-                <li><i class="flaticon-sound"></i> {{ playlist.songs_count }} Titre{{ hasMany ? 's': '' }}</li>
-                <li>
-                    <a href="">
+                <ul class="list-unstyled">
+                    <li><i class="flaticon-sound"></i> {{ playlist.songs_count }} Titre{{ hasMany ? 's': '' }}</li>
+                    <li>
                         <i class="flaticon-playlist"></i> Afficher la playlist
-                    </a>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
