@@ -28,7 +28,7 @@ class SongController extends Controller
             ->where('status', 'published')
             ->select('songs.title', 'cover', 'duration', 'songs.number', 'link', 'artist', 'genre',
                 'size', 'plays', 'downloads', 'playlist_id', 'playlists.title as playlist_title',
-                'can_download')
+                'can_download', 'cover_sm', 'cover_md')
             ->take($limit)
             ->orderBy('songs.id', 'desc')
             ->get();
@@ -55,7 +55,7 @@ class SongController extends Controller
             ->where('songs.number', '=', $number)
             ->select('songs.title', 'cover', 'duration', 'songs.number', 'link', 'artist', 'genre',
                 'size', 'plays', 'downloads', 'playlist_id', 'playlists.title as playlist_title',
-                'can_download')
+                'can_download', 'cover_sm', 'cover_md')
             ->first();
 
             return response()->json($songs);

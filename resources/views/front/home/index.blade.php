@@ -18,14 +18,13 @@
         <div class="home" id="app">
 
             <section class="home-top">
-                <div class="container">
-                    <div class="logo">
-                        <a href="/"><img src="/assets/img/logo.png" alt="Logo Willy Mix"></a>
-                    </div>
-
-                    <h1>Willy <span>Mix</span></h1>
-                    <h4>Bienvenue dans mon univers</h4>
-                </div>
+                <ul id="lightSlider">
+                    @foreach($images as $img)
+                        <li data-thumb="{{ $img }}">
+                            <img src="{{ $img }}" />
+                        </li>
+                    @endforeach
+                </ul>
             </section>
 
 
@@ -232,5 +231,22 @@
 
         @include('front.includes.footer')
         <script src="/assets/js/app.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#lightSlider").lightSlider({
+                item: 1,
+                slideMargin: 0,
+                pager: false,
+                enableTouch:true,
+                enableDrag:true,
+                auto: true,
+                pauseOnHover: true,
+                pause: 5000,
+                gallery: false,
+                speed: 900,
+                loop: true
+            });
+        });
+        </script>
     </body>
 </html>

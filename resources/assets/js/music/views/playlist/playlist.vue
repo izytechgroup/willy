@@ -116,6 +116,7 @@ export default {
 
 <style lang="scss" scoped>
 h4 {
+    margin-bottom: 20px;
     a {
         color: red;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\views\front;
 
+use Storage;
 use App\Models\Event;
 use App\Models\Song;
 use App\Models\Video;
@@ -34,6 +35,9 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
-        return view('front.home.index', compact('events', 'songs', 'playlists', 'videos'));
+        $directory = '/docs/images/sliders/home';
+        $images = Storage::files($directory);
+
+        return view('front.home.index', compact('events', 'songs', 'playlists', 'videos', 'images'));
     }
 }

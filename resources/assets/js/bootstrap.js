@@ -10,6 +10,7 @@ window.moment = require('moment')
 
 window.$ = window.jQuery = require('jquery')
 require('bootstrap-sass');
+require('lightslider');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

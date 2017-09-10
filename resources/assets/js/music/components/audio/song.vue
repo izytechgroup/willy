@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="song">
         <div class="cover">
-            <img :src="song.cover" alt="">
+            <img :src="song.cover_md" alt="">
         </div>
 
         <div class="details">

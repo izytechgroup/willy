@@ -102,6 +102,7 @@ export default {
 <style lang="scss" scoped>
 .song-view {
     h4 {
+        margin-bottom: 20px;
         a {
             color: red;
         }

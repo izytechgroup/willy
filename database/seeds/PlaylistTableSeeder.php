@@ -24,6 +24,8 @@ class PlaylistTableSeeder extends Seeder
             'title' => 'Mix Audio',
             'number'=> 101002,
             'cover' => '/docs/images/audio/playlist1/lady.jpg',
+            'cover_sm' => '/docs/sm/audio/playlist1/lady.jpg',
+            'cover_md' => '/docs/md/audio/playlist1/lady.jpg',
             'status'=> 'published',
             'type'  => 'audio'
         ]);
@@ -32,6 +34,8 @@ class PlaylistTableSeeder extends Seeder
             'title' => 'Audio Voyage',
             'number'=> 101003,
             'cover' => '/docs/images/audio/playlist1/dipanda.jpg',
+            'cover_sm' => '/docs/sm/audio/playlist1/dipanda.jpg',
+            'cover_md' => '/docs/md/audio/playlist1/dipanda.jpg',
             'status'=> 'published',
             'type'  => 'audio'
         ]);
