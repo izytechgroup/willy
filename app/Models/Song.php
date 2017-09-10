@@ -18,6 +18,10 @@ class Song extends Model
         return $q->orderBy('id', 'desc');
     }
 
+    public function scopeCanDownload($q) {
+        return $q->where('can_download', true);
+    }
+
 
     public function playlist() {
         return $this->belongsTo(Playlist::class);

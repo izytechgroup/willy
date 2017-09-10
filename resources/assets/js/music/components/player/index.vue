@@ -31,7 +31,7 @@
             <div class="progress">
                 <div class="current" :style="'width:' + current + '%'"></div>
                 <div class="infos">
-                    <div class="title">{{ song.title }}</div>
+                    <div class="title">{{ song.artist }} - {{ song.title }}</div>
                     <div class="time">{{ elapsed | duration }} - {{ duration | duration }}</div>
                 </div>
             </div>

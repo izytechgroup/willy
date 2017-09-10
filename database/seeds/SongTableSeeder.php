@@ -14,6 +14,8 @@ class SongTableSeeder extends Seeder
     {
         Song::create([
             'title'         => 'Eminem PlayList 2',
+            'artist'        => 'Willy Mix',
+            'genre'         => 'World',
             'number'        => 101001,
             'playlist_id'   => 2,
             'link'          => '/docs/images/audio/playlist1/Eminem_Rap_God.mp3',
@@ -25,17 +27,22 @@ class SongTableSeeder extends Seeder
 
         Song::create([
             'title'         => 'Eminem Playlist 3',
+            'artist'        => 'Willy Mix',
+            'genre'         => 'World',
             'number'        => 101002,
             'playlist_id'   => 3,
             'link'          => '/docs/images/audio/playlist1/Eminem_Rap_God.mp3',
             'duration'      => '05:52',
             'size'          => 1024,
             'plays'         => 24,
-            'downloads'     => 19
+            'downloads'     => 19,
+            'can_download'  => false
         ]);
 
         Song::create([
             'title'         => 'Flux Pavilion',
+            'artist'        => 'Willy Mix',
+            'genre'         => 'World',
             'number'        => 101003,
             'playlist_id'   => 2,
             'link'          => '/docs/images/audio/playlist1/Flux_Pavilion_-_I_Can_T_Stop.mp3',

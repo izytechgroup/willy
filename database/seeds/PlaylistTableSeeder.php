@@ -37,7 +37,7 @@ class PlaylistTableSeeder extends Seeder
         ]);
 
         Playlist::create([
-            'title' => 'Clips',
+            'title' => 'Clips Vidéo',
             'number'=> 101004,
             'cover' => '/docs/images/audio/playlist1/hqdefault.jpg',
             'status'=> 'published',

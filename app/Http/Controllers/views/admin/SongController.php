@@ -41,11 +41,14 @@ class SongController extends Controller
             'playlist_id'   => $id,
             'link'          => $request->link,
             'title'         => $request->title,
+            'artist'        => $request->artist,
+            'genre'         => $request->genre,
             'duration'      => $duration,
             'size'          => $size,
             'plays'         => 0,
-            'number'        => $this->makeSongNumber(),
-            'downloads'     => 0
+            'downloads'     => 0,
+            'can_download'  => $request->can_download,
+            'number'        => $this->makeSongNumber()
         ]);
 
         return redirect()->back()->with('message', 'La piste a bien été ajoutée');

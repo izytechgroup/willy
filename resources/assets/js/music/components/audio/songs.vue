@@ -1,7 +1,5 @@
 <template lang="html">
     <div class="songs">
-        <h4><i class="flaticon-minus"></i> Songs</h4>
-
         <div class="list">
             <song v-for="s in songs" :key="s.number" :song="s"></song>
         </div>

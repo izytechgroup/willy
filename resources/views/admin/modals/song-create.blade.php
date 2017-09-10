@@ -15,19 +15,58 @@
                     <form class="form mt-20" action="{{ route('audio.playlist.song.add', $playlist->id) }}" method="post">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <input type="text" name="title" value="{{ old('title') }}"
-                            required
-                            placeholder="Titre de la piste"
-                            class="form-control input-lg">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <select class="form-control input-lg" name="can_download">
+                                        <option value="1">Téléchargeable</option>
+                                        <option value="0">Non Téléchargeable</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <input type="text" name="link" value="{{ old('link') }}"
-                            required
-                            placeholder="Lien de la piste"
-                            id="linker"
-                            class="form-control input-lg">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="artist" value="{{ old('artist') }}"
+                                        required
+                                        placeholder="Nom de l'artiste"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="title" value="{{ old('title') }}"
+                                    required
+                                    placeholder="Titre de la piste"
+                                    class="form-control input-lg">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="genre" value="{{ old('genre') }}"
+                                        required
+                                        placeholder="Genre"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <input type="text" name="link" value="{{ old('link') }}"
+                                        required
+                                        placeholder="Lien de la piste"
+                                        id="linker"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
                         </div>
 
 

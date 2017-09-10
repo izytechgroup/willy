@@ -12,7 +12,7 @@
 
 
             <div class="title">
-                {{ song.title }}
+                {{ song.artist }} - {{ song.title }}
             </div>
 
             <div class="metas">
@@ -25,7 +25,7 @@
             </div>
 
             <div class="buttons">
-                <button class="btn btn-red" @click="download()">
+                <button class="btn btn-red" @click="download()" v-show="canDownload">
                     <i class="flaticon-download"></i> Télécharger
                 </button>
 
@@ -71,6 +71,10 @@ export default {
 
         currentTrack () {
             return this.$store.state.song
+        },
+
+        canDownload () {
+            return this.song.can_download == '1'
         }
     }
 }

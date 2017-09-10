@@ -1,6 +1,11 @@
 <template lang="html">
     <div class="song-view">
-        <h4><i class="flaticon-minus"></i> Song</h4>
+        <h4>
+            <i class="flaticon-minus"></i>
+            <router-link :to="{ name: 'home' }">Audio</router-link>
+             > Song
+        </h4>
+
 
         <loader :loading="isLoading"></loader>
 
@@ -31,7 +36,7 @@
                             </li>
 
                             <li>
-                                <button class="btn btn-blue" @click="download()">
+                                <button class="btn btn-blue" @click="download()" v-show="canDownload">
                                     <i class="flaticon-download"></i> Télécharger
                                 </button>
                             </li>
@@ -85,6 +90,10 @@ export default {
                 return true
             }
             return false
+        },
+
+        canDownload () {
+            return this.song.can_download == '1'
         }
     }
 }
@@ -92,6 +101,11 @@ export default {
 
 <style lang="scss" scoped>
 .song-view {
+    h4 {
+        a {
+            color: red;
+        }
+    }
     .content {
         background-color: white;
         font-family: 'Source Sans Pro', 'Open Sans', sans-serif;

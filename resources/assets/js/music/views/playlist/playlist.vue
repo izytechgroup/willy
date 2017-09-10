@@ -1,6 +1,10 @@
 <template lang="html">
     <div class="playlist">
-        <h4><i class="flaticon-minus"></i> Playlist</h4>
+        <h4>
+            <i class="flaticon-minus"></i>
+            <router-link :to="{ name: 'home' }">Audio</router-link>
+             > Playlist
+        </h4>
 
         <loader :loading="isLoading"></loader>
 
@@ -111,6 +115,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h4 {
+    a {
+        color: red;
+    }
+}
+
 .playlist-content {
     background-color: white;
     margin-top: 5px;

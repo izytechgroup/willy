@@ -28,6 +28,10 @@ export default new Vuex.Store({
             eventBus.$emit('player.increment')
         },
 
+        SET_SONGS (state, songs) {
+            state.songs = songs
+        },
+
         ADD_SONGS (state, songs) {
             songs.forEach(elem => {
                 let exists = window._.find(state.songs, elem)
