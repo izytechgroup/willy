@@ -23,7 +23,7 @@ class PlaylistTableSeeder extends Seeder
         Playlist::create([
             'title' => 'Mix Audio',
             'number'=> 101002,
-            'cover' => '/docs/images/audio/playlist1/hqdefault.jpg',
+            'cover' => '/docs/images/audio/playlist1/lady.jpg',
             'status'=> 'published',
             'type'  => 'audio'
         ]);
@@ -31,7 +31,7 @@ class PlaylistTableSeeder extends Seeder
         Playlist::create([
             'title' => 'Audio Voyage',
             'number'=> 101003,
-            'cover' => '/docs/images/audio/playlist1/hqdefault.jpg',
+            'cover' => '/docs/images/audio/playlist1/dipanda.jpg',
             'status'=> 'published',
             'type'  => 'audio'
         ]);
