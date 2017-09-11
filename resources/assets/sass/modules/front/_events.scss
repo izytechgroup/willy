@@ -1,0 +1,146 @@
+.events-page {
+    padding-top: 80px;
+
+    .event {
+        width: 100%;
+        background-color: white;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.055);
+        margin-bottom: 30px;
+
+        .image {
+            width:50%;
+            position: relative;
+            float: left;
+            margin-right: 10px;
+        }
+        img {
+            width: 100%;
+        }
+
+        .details {
+            padding: 10px;
+            h4 {
+                font-size: 18px;
+                font-weight: 500;
+                color: red;
+                margin-bottom: 10px;
+            }
+
+            ul {
+                color: $color-teal;
+                font-weight: 400;
+
+                li {
+                    line-height: 26px;
+                    font-size: 15px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        .event {
+            .details {
+                ul {
+                    li {
+                        font-size: 14px;
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.event-page {
+    /**
+     * man tu no qd une nga te ask un way non. tu ask le prix tu lui give les dos en main
+     */
+
+    padding-top: 90px;
+
+    .link {
+        margin-bottom: 10px;
+        
+        a {color: red;}
+    }
+
+    .event {
+        background-color: white;
+        padding: 0;
+        width: 100%;
+        height: auto;
+        font-family: 'Source Sans Pro', 'Open Sans', sans-serif;
+
+        h4 {
+            font-weight: 500;
+            font-size: 30px;
+            font-family: inherit;
+        }
+
+        .details {
+            font-size: 16px;
+            line-height: 28px;
+
+            h5 {
+                font-size: 18px;
+                font-weight: 600;
+                margin-top: 30px;
+            }
+
+            li {
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    .others {
+        margin-top: 40px;
+
+        h4 {
+            margin-bottom: 20px;
+        }
+
+        .event {
+            width: 100%;
+            background-color: white;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.055);
+            margin-bottom: 30px;
+
+            .image {
+                width:50%;
+                position: relative;
+                float: left;
+                margin-right: 10px;
+            }
+            img {
+                width: 100%;
+            }
+
+            .details {
+                padding: 10px;
+                h4 {
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: red;
+                    margin-bottom: 10px;
+                }
+
+                ul {
+                    color: $color-teal;
+                    font-weight: 400;
+
+                    li {
+                        line-height: 26px;
+                        font-size: 15px;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

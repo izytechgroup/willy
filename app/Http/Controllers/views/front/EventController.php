@@ -31,6 +31,25 @@ class EventController extends Controller
         ->orderBy('id', 'desc')
         ->paginate(self::PAGINATE_NB);
 
-        return view('front.events.index', compact('events'));
+        return view('front.events.index2', compact('events'));
+    }
+
+
+
+    public function show ($slug)
+    {
+        $event = Event::where('slug', $slug)->first();
+        if (!$event) {
+            abort(404);
+        }
+
+        $events = Event::canDisplay()
+        ->upcoming()
+        ->closest()
+        ->where('id', '!=', $event->id)
+        ->take(2)
+        ->get();
+
+        return view('front.events.show', compact('event', 'events'));
     }
 }

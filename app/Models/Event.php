@@ -16,6 +16,14 @@ class Event extends Model
         return $q->where('status', 'published');
     }
 
+    public function scopeUpcoming($q) {
+        return $q->where('date', '>=', date('Y-m-d'));
+    }
+
+    public function scopeClosest($q) {
+        return $q->orderBy('date');
+    }
+
     public function frenchDate() {
         return strftime("%d %B %Y", strtotime($this->date));
     }

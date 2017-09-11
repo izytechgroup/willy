@@ -30,5 +30,5 @@ Route::group(['prefix' => 'songs'], function () {
 
 Route::group(['prefix' => 'events'], function () {
     Route::get('/', 'views\front\EventController@index')->name('events.all');
-    Route::get('{number}', 'views\front\VideoController@show')->name('videos.one');
+    Route::get('{slug}', 'views\front\EventController@show')->name('events.one');
 });

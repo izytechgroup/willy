@@ -50,7 +50,7 @@
                     </div>
 
                     @foreach ($events->chunk(2) as $chunks)
-                        <div class="row mt-20">
+                        <div class="row mt-20 pb-20">
                             @foreach($chunks as $e)
                                 <div class="col-sm-6">
                                     <a href="/events/{{ $e->slug }}">
