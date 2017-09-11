@@ -118,7 +118,7 @@ class VideoController extends Controller
             }
             else {
                 // Youtube
-                $thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+                $thumbnail = 'https://img.youtube.com/vi/'.$request->origin_id.'/mqdefault.jpg';
             }
 
             $video = Video::create([
@@ -173,7 +173,7 @@ class VideoController extends Controller
             }
             else {
                 // Youtube
-                $video->thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+                $video->thumbnail = 'https://img.youtube.com/vi/'.$request->origin_id.'/mqdefault.jpg';
             }
 
             $video->title = $request->title;
