@@ -6,7 +6,7 @@ use Storage;
 use App\Models\Event;
 use App\Models\Song;
 use App\Models\Video;
-use App\Models\PlayList;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
