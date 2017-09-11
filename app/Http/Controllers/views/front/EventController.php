@@ -23,7 +23,8 @@ class EventController extends Controller
         $keywords = $request->keywords;
 
         $events = Event::when($keywords, function($query) use ($keywords) {
-            return $query->where('title', 'like', '%'.$keywords.'%');
+            return $query->where('title', 'like', '%'.$keywords.'%')
+            ->orWhere('country', 'like', '%'.$keywords.'%');
         })
         ->when($status, function($query) use ($status) {
             return $query->where('status', $status);

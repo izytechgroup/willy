@@ -32,3 +32,8 @@ Route::group(['prefix' => 'events'], function () {
     Route::get('/', 'views\front\EventController@index')->name('events.all');
     Route::get('{slug}', 'views\front\EventController@show')->name('events.one');
 });
+
+Route::get('don', 'views\front\PageController@don');
+Route::get('contact', 'views\front\PageController@contact');
+Route::get('academie', 'views\front\PageController@academie');
+Route::get('location', 'views\front\PageController@location');
