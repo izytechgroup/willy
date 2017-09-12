@@ -31,7 +31,7 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
-        $videos     = Video::orderBy('id', 'desc')
+        $videos = Video::orderBy('id', 'desc')
             ->take(4)
             ->get();
 
