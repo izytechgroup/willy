@@ -19,5 +19,22 @@ class PagesTableSeeder extends Seeder
             'content'   => 'Sample page content',
             'last_updated_by' => 1
         ]);
+
+
+        Page::create([
+            'title'     => 'Location',
+            'slug'      => 'location',
+            'tags'      => 'location de sono, animation',
+            'content'   => 'Louez du matos moins chez pour vos animations',
+            'last_updated_by' => 1
+        ]);
+
+        Page::create([
+            'title'     => 'Willy Mix Academie',
+            'slug'      => 'academie',
+            'tags'      => 'académie de mixage, apprendre à être DJ, sonorisation',
+            'content'   => 'Vous voulez devenir DJ, la willy Mix Académie est votre chance !',
+            'last_updated_by' => 1
+        ]);
     }
 }

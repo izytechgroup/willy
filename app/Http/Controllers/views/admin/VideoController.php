@@ -199,7 +199,7 @@ class VideoController extends Controller
         if (!function_exists('curl_init'))
             return redirect()->back()->with('message', 'CURL is not installed!');
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://vimeo.com/api/v2/video/".$video_id.".php");
+        curl_setopt($ch, CURLOPT_URL, "https://vimeo.com/api/v2/video/".$video_id.".php");
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);

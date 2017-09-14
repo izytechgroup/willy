@@ -140,7 +140,7 @@
                                         <div class="play">
                                             <img src="/assets/img/play.png" alt="">
                                         </div>
-                                        <img src="https://img.{{ $videos[0]->origin }}.com/vi/{{ $videos[0]->origin_id }}/mqdefault.jpg">
+                                        <img src="{{ $videos[0]->thumbnail }}">
 
                                         <div class="title">
                                             {{ strtolower($videos[0]->title ) }}
@@ -162,7 +162,7 @@
                                                     <div class="play">
                                                         <img src="/assets/img/play.png" alt="">
                                                     </div>
-                                                    <img src="https://img.{{ $video->origin }}.com/vi/{{ $video->origin_id }}/mqdefault.jpg" class="img-responsive">
+                                                    <img src="{{ $video->thumbnail }}" class="img-responsive">
                                                     <div class="title">
                                                         {{ strtolower($video->title ) }}
                                                     </div>
