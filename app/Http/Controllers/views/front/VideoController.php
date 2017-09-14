@@ -19,6 +19,11 @@ class VideoController extends Controller
             $playlists = Playlist::has('videos')
             ->video()->orderBy('title')->get();
 
+            if (!$main){
+                $videos = [];
+                return view('front.videos.index', compact('videos', 'main', 'playlists'));
+            }
+
             $status = null;
             if ( $request->has('status') && $request->status != '' ) {
                 if ( in_array($request->status, ['published', 'unpublished']) ) {
