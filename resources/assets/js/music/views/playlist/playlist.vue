@@ -79,7 +79,11 @@ export default {
 
         toSeconds (str) {
             var min = str.split(':')
-            return Number(min[0]) * 60 + Number(min[1])
+            if (min.length === 2) {
+                return Number(min[0]) * 60 + Number(min[1])
+            } else if (min.length === 3) {
+                return Number((min[0] * 60 * 60) + min[1] * 60 + Number(min[2]))
+            }
         },
 
         play (s) {

@@ -24,9 +24,11 @@ Vue.filter('time', function(date) {
 })
 
 Vue.filter('duration', function(sec) {
-    var minutes = Math.floor(sec / 60)
-    var seconds = Math.floor(sec % 60)
-    var duration = (minutes > 9 ? minutes : '0' + minutes)
+    var hours   = Math.floor(sec / 3600)
+    var minutes = Math.floor(sec %3600 / 60)
+    var seconds = Math.floor(sec % 3600 % 60)
+    var duration = hours > 0 ? hours + ':' : ''
+    duration += minutes > 9 ? minutes : '0' + minutes
     duration += ':' + (seconds > 9 ? seconds : '0' + seconds)
     return duration
 })
