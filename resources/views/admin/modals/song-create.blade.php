@@ -58,26 +58,38 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-8">
+                            <div class="col-sm-4">
                                 <div class="form-group">
-                                    <input type="text" name="link" value="{{ old('link') }}"
+                                    <input type="text" name="duration" value="{{ old('duration') }}"
                                         required
-                                        placeholder="Lien de la piste"
-                                        id="linker"
+                                        placeholder="Durée Ex: 59:59"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="size" value="{{ old('size') }}"
+                                        required
+                                        placeholder="Taille en MB"
                                         class="form-control input-lg">
                                 </div>
                             </div>
                         </div>
 
 
+                        <div class="form-group">
+                            <input type="text" name="link" value="{{ old('link') }}"
+                                required
+                                placeholder="Lien de la piste"
+                                class="form-control input-lg">
+                        </div>
 
-                        <div class="text-left">
-                            <a href="/backend/filemanager/dialog.php?type=2&field_id=linker" class="iframe-btn btn-dark btn btn-lg">
-                                <i class='flaticon-folder'></i> Fichiers
-                            </a>
 
-                            <button type="submit" class="btn btn-lg btn-green pull-right">
-                                <i class="flaticon-save"></i> Sauvegarder
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-lg btn-green">
+                                <i class="flaticon-save mr-10"></i> Sauvegarder
                             </button>
                         </div>
                     </form>

@@ -99,16 +99,12 @@ class SongController extends Controller
                 return response()->json('No song found', self::HTTP_BADREQUEST);
             }
 
-            $link = str_replace(asset('/'), '', $request->link);
-            $size = Storage::size($link);
-            $duration = LaravelMP3::getDuration($link);
-
-            $song->duration = $duration;
             $song->title    = $request->title;
             $song->genre    = $request->genre;
             $song->artist   = $request->artist;
             $song->link     = $request->link;
-            $song->size     = $size;
+            $song->duration = $request->duration;
+            $song->size     = $request->size;
             $song->can_download = $request->can_download;
             $song->save();
 
@@ -125,11 +121,10 @@ class SongController extends Controller
         try
         {
             $song = Song::where('number', $number)->first();
-            $file = public_path() . $song->link;
             $song->downloads = $song->downloads + 1;
             $song->save();
 
-            return response()->download($file, $song->title . '.mp3');
+            return redirect($song->link);
         }
         catch (Exception $e) {
             return response()->json($e->getMessage(), self::HTTP_ERROR);
