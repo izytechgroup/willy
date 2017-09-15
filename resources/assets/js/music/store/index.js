@@ -60,7 +60,9 @@ export default new Vuex.Store({
         },
 
         SET_PLAYLIST (state, playlist) {
-            state.playlist = playlist
+            if (state.playlist.id !== playlist.id) {
+                state.playlist = playlist
+            }
         },
 
         SET_PLAYLIST_SONGS (state, songs) {
@@ -193,6 +195,11 @@ export default new Vuex.Store({
             } else {
                 commit('STOP_SONG')
             }
+        },
+
+        setPlaylist ({ commit, state }, playlist) {
+            commit('SET_PLAYLIST', playlist)
+            commit('PLAY_SONG', playlist.songs[0])
         }
     }
 })

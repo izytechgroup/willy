@@ -16,7 +16,12 @@
 
                 <div class="col-sm-8">
                     <div class="details">
-                        <h3> {{ playlist.title }}</h3>
+                        <h3>
+                            <span @click="playAll()" class="pointer">
+                                <i class="flaticon-play-round"></i>
+                            </span>
+                            {{ playlist.title }}
+                        </h3>
                         <ul class="metas list-inline">
                             <li><i class="flaticon-sound"></i> {{ songs.length }} Titre{{ hasMany ? 's': '' }}</li>
                             <li><i class="flaticon-time"></i> {{ seconds | duration }}</li>
@@ -88,6 +93,10 @@ export default {
 
         play (s) {
             this.$store.commit('PLAY_SONG', s)
+        },
+
+        playAll () {
+            this.$store.dispatch('setPlaylist', this.playlist)
         },
 
         open (s) {
