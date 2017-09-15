@@ -88,7 +88,7 @@
                                 <div class="row">
                                     @foreach ($playlists as $playlist)
                                         <div class="col-sm-6">
-                                            <a href="">
+                                            <a href="/audio#/playlist/{{ $playlist->number }}">
                                                 <div class="playlist">
                                                     <div class="bg">
                                                         <div class="cover">
