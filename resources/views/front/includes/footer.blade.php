@@ -2,9 +2,9 @@
     <div class="container">
         <ul class="menu list-inline">
             <li><a href="">Aide</a></li>
-            <li><a href="">Biomédical</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Conditions</a></li>
+            <li><a href="/biomedical">Biomédical</a></li>
+            <li><a href="/contact">Contact</a></li>
+            {{-- <li><a href="">Conditions</a></li> --}}
         </ul>
 
         <div class="logo">

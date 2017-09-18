@@ -118,7 +118,7 @@ class VideoController extends Controller
             }
             else {
                 // Youtube
-                $thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+                $thumbnail = 'https://img.youtube.com/vi/'.$request->origin_id.'/mqdefault.jpg';
             }
 
             $video = Video::create([
@@ -173,7 +173,7 @@ class VideoController extends Controller
             }
             else {
                 // Youtube
-                $video->thumbnail = 'https://img.'.$video->origin.'.com/vi/'.$video->origin_id.'/mqdefault.jpg';
+                $video->thumbnail = 'https://img.youtube.com/vi/'.$request->origin_id.'/mqdefault.jpg';
             }
 
             $video->title = $request->title;
@@ -199,7 +199,7 @@ class VideoController extends Controller
         if (!function_exists('curl_init'))
             return redirect()->back()->with('message', 'CURL is not installed!');
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://vimeo.com/api/v2/video/".$video_id.".php");
+        curl_setopt($ch, CURLOPT_URL, "https://vimeo.com/api/v2/video/".$video_id.".php");
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);

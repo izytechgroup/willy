@@ -30,6 +30,37 @@
             </div>
 
 
+            <div class="main_lists">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="main">
+                            @include('front.videos.' .$main->origin)
+                            <div class="title">
+                                {{ $main->title }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="playlists">
+                            <h4><i class="flaticon-minus"></i> Playlists</h4>
+
+                            <ul class="list-unstyled">
+                                @foreach ($playlists as $p)
+                                    <li>
+                                        <i class="flaticon-playlist"></i>
+                                        <a href="?playlist={{ $p->number }}">{{ $p->title }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <h4><i class="flaticon-minus"></i> Videos</h4>
+
             <div class="row">
                 @foreach ($videos as $video)
                     <div class="col-sm-3">

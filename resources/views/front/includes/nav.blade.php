@@ -16,7 +16,7 @@
             <li><a href="/events">Events</a></li>
             <li><a href="/location">Location</a></li>
             <li><a href="/academie">Académie</a></li>
-            <li class="active"><a href="">Faire un don</a></li>
+            <li class="active"><a href="/don">Faire un don</a></li>
         </ul>
     </div>
 </div>

@@ -17,12 +17,15 @@ class CreateSongsTable extends Migration
             $table->increments('id');
             $table->integer('playlist_id')->unsigned();
             $table->string('title');
+            $table->string('artist')->nullable();
+            $table->string('genre')->nullable();
             $table->integer('number');
             $table->string('link');
             $table->string('duration')->nullable();
-            $table->integer('size')->default(0);
+            $table->string('size')->nullable();
             $table->integer('plays')->default(0);
             $table->integer('downloads')->default(0);
+            $table->boolean('can_download')->default(true);
             $table->timestamps();
         });
     }

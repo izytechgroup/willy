@@ -16,8 +16,8 @@
 
                     <tbody>
                             <tr v-for="s in songs">
-                                <td>
-                                    <a @click="editSong(s)"><i class="flaticon-pencil"></i></a>
+                                <td @click="editSong(s)" class="pointer">
+                                    <i class="flaticon-pencil"></i>
                                     {{ s.title }}
                                 </td>
                                 <td>{{ s.duration }}</td>

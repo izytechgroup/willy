@@ -18,6 +18,10 @@ class Playlist extends Model
         return $q->where('type', '=', 'audio');
     }
 
+    public function scopeVideo($q) {
+        return $q->where('type', '=', 'video');
+    }
+
     public function scopeLatest($q) {
         return $q->orderBy('id', 'desc');
     }

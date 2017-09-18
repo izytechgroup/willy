@@ -8,33 +8,86 @@
 
 
                         <form class="form mt-20" @submit.prevent="checkBeforeSubmit()">
-                            <div class="form-group">
-                                <input type="text" name="title"
-                                    required
-                                    v-model="song.title"
-                                    placeholder="Titre de la piste"
-                                    class="form-control input-lg">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <select class="form-control input-lg" name="can_download" v-model="song.can_download">
+                                            <option value="1">Téléchargeable</option>
+                                            <option value="0">Non Téléchargeable</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="artist"
+                                            required
+                                            v-model="song.artist"
+                                            placeholder="Nom de l'artiste"
+                                            class="form-control input-lg">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="title"
+                                            required
+                                            v-model="song.title"
+                                            placeholder="Titre de la piste"
+                                            class="form-control input-lg">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="text" name="genre"
+                                            v-model="song.genre"
+                                            placeholder="Genre"
+                                            required
+                                            class="form-control input-lg">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="text" name="duration"
+                                            v-model="song.duration"
+                                            required
+                                            placeholder="Durée Ex: 59:59"
+                                            class="form-control input-lg">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="text" name="size"
+                                            v-model="song.size"
+                                            required
+                                            placeholder="Taille en MB"
+                                            class="form-control input-lg">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of row  -->
 
                             <div class="form-group">
                                 <input type="text" name="link"
                                     v-model="song.link"
                                     placeholder="Lien de la piste"
-                                    id="link2"
                                     class="form-control input-lg">
                             </div>
 
 
 
+                            <div class="text-right">
 
-
-                            <div class="text-left">
-                                <a href="/backend/filemanager/dialog.php?type=2&field_id=link2" class="iframe-btn btn-dark btn btn-lg">
-                                    <i class='flaticon-folder'></i> Fichiers
-                                </a>
-
-                                <button type="submit" class="btn btn-lg btn-green pull-right" :disabled="isLoading">
-                                    <i class="flaticon-save"></i>
+                                <button type="submit" class="btn btn-lg btn-green" :disabled="isLoading">
+                                    <i class="flaticon-save mr-10"></i>
                                     <span v-show="!isLoading">Sauvegarder</span>
                                     <span v-show="isLoading">Sauvegarde en cours</span>
                                 </button>

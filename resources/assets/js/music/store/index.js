@@ -25,6 +25,11 @@ export default new Vuex.Store({
         SET_INITIAL_SONG (state, song) {
             state.song = song
             eventBus.$emit('player.set', {})
+            eventBus.$emit('player.increment')
+        },
+
+        SET_SONGS (state, songs) {
+            state.songs = songs
         },
 
         ADD_SONGS (state, songs) {
@@ -55,7 +60,9 @@ export default new Vuex.Store({
         },
 
         SET_PLAYLIST (state, playlist) {
-            state.playlist = playlist
+            if (state.playlist.id !== playlist.id) {
+                state.playlist = playlist
+            }
         },
 
         SET_PLAYLIST_SONGS (state, songs) {
@@ -73,6 +80,7 @@ export default new Vuex.Store({
             if (state.song.number !== song.number) {
                 state.song = song
                 eventBus.$emit('player.change', {})
+                eventBus.$emit('player.increment')
                 state.isPlaying = true
             } else {
                 state.isPlaying = !state.isPlaying
@@ -112,7 +120,8 @@ export default new Vuex.Store({
     },
 
     actions: {
-        audioEnded ({ commit, state }) {
+        audioEnded ({ dispatch, commit, state }) {
+            dispatch('incrementPlays')
             if (state.playlist.songs.length > 0) {
                 let found = false
                 const size = state.playlist.songs.length
@@ -186,6 +195,11 @@ export default new Vuex.Store({
             } else {
                 commit('STOP_SONG')
             }
+        },
+
+        setPlaylist ({ commit, state }, playlist) {
+            commit('SET_PLAYLIST', playlist)
+            commit('PLAY_SONG', playlist.songs[0])
         }
     }
 })

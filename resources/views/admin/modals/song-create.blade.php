@@ -15,30 +15,81 @@
                     <form class="form mt-20" action="{{ route('audio.playlist.song.add', $playlist->id) }}" method="post">
                         {{ csrf_field() }}
 
-                        <div class="form-group">
-                            <input type="text" name="title" value="{{ old('title') }}"
-                            required
-                            placeholder="Titre de la piste"
-                            class="form-control input-lg">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <select class="form-control input-lg" name="can_download">
+                                        <option value="1">Téléchargeable</option>
+                                        <option value="0">Non Téléchargeable</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="artist" value="{{ old('artist') }}"
+                                        required
+                                        placeholder="Nom de l'artiste"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" name="title" value="{{ old('title') }}"
+                                    required
+                                    placeholder="Titre de la piste"
+                                    class="form-control input-lg">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="genre" value="{{ old('genre') }}"
+                                        required
+                                        placeholder="Genre"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="duration" value="{{ old('duration') }}"
+                                        required
+                                        placeholder="Durée Ex: 59:59"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="size" value="{{ old('size') }}"
+                                        required
+                                        placeholder="Taille en MB"
+                                        class="form-control input-lg">
+                                </div>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <input type="text" name="link" value="{{ old('link') }}"
-                            required
-                            placeholder="Lien de la piste"
-                            id="linker"
-                            class="form-control input-lg">
+                                required
+                                placeholder="Lien de la piste"
+                                class="form-control input-lg">
                         </div>
 
 
 
-                        <div class="text-left">
-                            <a href="/backend/filemanager/dialog.php?type=2&field_id=linker" class="iframe-btn btn-dark btn btn-lg">
-                                <i class='flaticon-folder'></i> Fichiers
-                            </a>
-
-                            <button type="submit" class="btn btn-lg btn-green pull-right">
-                                <i class="flaticon-save"></i> Sauvegarder
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-lg btn-green">
+                                <i class="flaticon-save mr-10"></i> Sauvegarder
                             </button>
                         </div>
                     </form>

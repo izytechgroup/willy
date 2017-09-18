@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\views\front;
 
+use Storage;
 use App\Models\Event;
 use App\Models\Song;
 use App\Models\Video;
-use App\Models\PlayList;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,10 +31,13 @@ class HomeController extends Controller
             ->take(4)
             ->get();
 
-        $videos     = Video::orderBy('id')
+        $videos = Video::orderBy('id', 'desc')
             ->take(4)
             ->get();
 
-        return view('front.home.index', compact('events', 'songs', 'playlists', 'videos'));
+        $directory = '/docs/images/sliders/home';
+        $images = Storage::files($directory);
+
+        return view('front.home.index', compact('events', 'songs', 'playlists', 'videos', 'images'));
     }
 }

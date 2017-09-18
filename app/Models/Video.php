@@ -13,6 +13,10 @@ class Video extends Model
         return $q->orderBy('id', 'desc');
     }
 
+    public function scopeLast($q) {
+        return $q->orderBy('id', 'desc')->first();
+    }
+
     public function scopeCanDisplay($q) {
         return $q->where('status', 'published');
     }

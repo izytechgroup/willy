@@ -84,8 +84,8 @@
                                 <h3>Statut</h3>
                                 <div class="form-select grey mt-10">
                                     <select class="" name="status">
-                                        <option value="unpublished">Privé</option>
                                         <option value="published">Public</option>
+                                        <option value="unpublished">Privé</option>
                                     </select>
                                 </div>
 
