@@ -29,4 +29,10 @@ class PageController extends Controller
     public function contact () {
         return view('front.pages.contact');
     }
+
+    public function biomedical () {
+        $p = Page::where('slug', 'biomedical')->first();
+        $images = Storage::files('/docs/images/sliders/biomedical');
+        return view('front.pages.biomedical');
+    }
 }

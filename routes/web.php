@@ -37,3 +37,4 @@ Route::get('don', 'views\front\PageController@don');
 Route::get('contact', 'views\front\PageController@contact');
 Route::get('academie', 'views\front\PageController@academie');
 Route::get('location', 'views\front\PageController@location');
+Route::get('biomedical', 'views\front\PageController@biomedical');
