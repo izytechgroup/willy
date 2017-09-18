@@ -29,7 +29,7 @@ class EventController extends Controller
         ->when($status, function($query) use ($status) {
             return $query->where('status', $status);
         })
-        ->orderBy('id', 'desc')
+        ->orderBy('date')
         ->paginate(self::PAGINATE_NB);
 
         return view('front.events.index2', compact('events'));
