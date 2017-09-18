@@ -33,6 +33,6 @@ class PageController extends Controller
     public function biomedical () {
         $p = Page::where('slug', 'biomedical')->first();
         $images = Storage::files('/docs/images/sliders/biomedical');
-        return view('front.pages.biomedical');
+        return view('front.pages.biomedical', compact('p', 'images'));
     }
 }
