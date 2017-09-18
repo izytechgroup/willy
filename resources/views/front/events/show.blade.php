@@ -33,9 +33,11 @@
                                 <i class="flaticon-calendar"></i> {{ $e->frenchDate() }}
                             </li>
 
-                            <li>
-                                <i class="flaticon-time"></i> {{ $e->time }}
-                            </li>
+                            @if ($e->time)
+                                <li>
+                                    <i class="flaticon-time"></i> {{ $e->time }}
+                                </li>
+                            @endif
 
                             <li>
                                 <i class="flaticon-location"></i> {{ $e->address }} -
@@ -46,13 +48,18 @@
                                 <i class="flaticon-phone"></i> {{ $e->phones() }}
                             </li>
 
-                            <li>
-                                <i class="flaticon-mail-dark"></i> {{ $e->email }}
-                            </li>
+                            @if ($e->email)
+                                <li>
+                                    <i class="flaticon-mail-dark"></i> {{ $e->email }}
+                                </li>
+                            @endif
 
-                            <li>
-                                <i class="flaticon-broken-link"></i> {{ $e->website }}
-                            </li>
+                            @if ($e->website)
+                                <li>
+                                    <i class="flaticon-broken-link"></i> {{ $e->website }}
+                                </li>
+                            @endif
+
                             <li class="mt-20">
                                 Organisé par : {{ $e->organizer }}
                             </li>
