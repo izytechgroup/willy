@@ -9,6 +9,9 @@
 @section('body')
     <div class="page-heading">
         <div class="buttons">
+            <a href="{{ route('videos.create') }}" class="btn btn-lg btn-green">
+                <i class="flaticon-cross"></i> Nouvelle Video
+            </a>
             <a href="{{ route('videos.index') }}" class="btn btn-lg btn-grey">
                 <i class="flaticon-undo"></i> Annuler
             </a>
