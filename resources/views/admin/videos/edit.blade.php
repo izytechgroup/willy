@@ -44,6 +44,16 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="col-sm-4">
+                                        <label>Video Statique</label>
+                                        <div class="form-select grey">
+                                            <select class="" name="is_static">
+                                                <option value="0" {{ $video->is_static ? '' : 'selected'  }}>Non</option>
+                                                <option value="1" {{ $video->is_static ? 'selected' : '' }}>Oui</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">

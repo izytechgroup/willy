@@ -11,8 +11,8 @@
             <a href="{{ route('events.index') }}" class="btn btn-lg btn-grey">
                 <i class="flaticon-undo"></i> Cancel
             </a>
-            <a href="/{{ $event->slug }}" class="btn btn-lg btn-green">
-                <i class="flaticon-view"></i> Edition Event
+            <a href="/events/{{ $event->slug }}" class="btn btn-lg btn-green" target="_blank">
+                <i class="flaticon-view"></i> Afficher
             </a>
         </div>
 

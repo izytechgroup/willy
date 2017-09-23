@@ -128,7 +128,8 @@ class VideoController extends Controller
                 'number' => $number,
                 'thumbnail' => $thumbnail,
                 'origin_id' => $request->origin_id,
-                'playlist_id' => $request->playlist_id
+                'playlist_id' => $request->playlist_id,
+                'is_static'   => (bool) $request->is_static
             ]);
 
             return redirect()->route('videos.edit', $video->id);
@@ -181,6 +182,7 @@ class VideoController extends Controller
             $video->origin_id = $request->origin_id;
             $video->origin = $request->origin;
             $video->status = $request->status;
+            $video->is_static = (bool) $request->is_static;
             $video->save();
 
             return redirect()->back()->with('message', 'La video a bien été mise à jour');

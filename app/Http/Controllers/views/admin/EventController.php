@@ -78,7 +78,7 @@ class EventController extends Controller
         ]);
 
         if($validator->fails())
-            return redirect()->back()->withErrors(['validator' => 'Title, slug and type are required']);
+            return redirect()->back()->withErrors(['validator' => 'Le titre et la date sont requis']);
 
         //Check if the slug exists using slug trait
         $slug = $this->getUniqueSlug($request->slug, 'events');

@@ -26,18 +26,30 @@ class HomeController extends Controller
             ->get();
 
         $playlists  = PlayList::where('type', 'audio')
-            ->with('songs')
-            ->orderBy('id')
-            ->take(4)
-            ->get();
+        ->with('songs')
+        ->orderBy('id')
+        ->take(4)
+        ->get();
+
+        $mainVideo = Video::where('is_static', true)
+        ->canDisplay()
+        ->orderBy('id', 'desc')
+        ->first();
+
+        if (!$mainVideo) {
+            $mainVideo = Video::orderBy('id', 'desc')
+            ->canDisplay()
+            ->first();
+        }
 
         $videos = Video::orderBy('id', 'desc')
-            ->take(4)
-            ->get();
+        ->where('id', '!=', $mainVideo->id)
+        ->take(4)
+        ->get();
 
         $directory = '/docs/images/sliders/home';
         $images = Storage::files($directory);
 
-        return view('front.home.index', compact('events', 'songs', 'playlists', 'videos', 'images'));
+        return view('front.home.index', compact('events', 'songs', 'playlists', 'videos', 'images', 'mainVideo'));
     }
 }

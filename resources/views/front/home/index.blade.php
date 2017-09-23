@@ -133,17 +133,17 @@
                 <div class="container">
                     <h2>#New Videos</h2>
                     <div class="row mt-20">
-                        @if (sizeof($videos) > 0)
+                        @if ($mainVideo)
                             <div class="col-sm-6">
-                                <a href="">
+                                <a href="{{ route('videos.one', $mainVideo->number)}}">
                                     <div class="main-video">
                                         <div class="play">
                                             <img src="/assets/img/play.png" alt="">
                                         </div>
-                                        <img src="{{ $videos[0]->thumbnail }}">
+                                        <img src="{{ $mainVideo->thumbnail }}">
 
                                         <div class="title">
-                                            {{ strtolower($videos[0]->title ) }}
+                                            {{ strtolower($mainVideo->title ) }}
                                         </div>
                                     </div>
                                 </a>
@@ -157,7 +157,7 @@
                                 <div class="row">
                                     @foreach ($videos as $video)
                                         <div class="col-sm-6">
-                                            <a href="">
+                                            <a href="{{ route('videos.one', $video->number)}}">
                                                 <div class="video">
                                                     <div class="play">
                                                         <img src="/assets/img/play.png" alt="">
@@ -194,7 +194,7 @@
                     <div class="row mt-20">
                         @foreach($events as $e)
                             <div class="col-sm-6">
-                                <a href="">
+                                <a href="{{ route('events.one', $e->slug)}}">
                                     <div class="event">
                                         <div class="image">
                                             <img src="{{ $e->smFlyer() }}" alt="{{ $e->title }}">
