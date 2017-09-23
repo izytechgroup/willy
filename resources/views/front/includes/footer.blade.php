@@ -18,17 +18,17 @@
         <div class="sociaux">
             <ul class="list-inline">
                 <li>
-                    <a href="">
+                    <a href="https://www.youtube.com/user/willymix007" target="_blank">
                         <i class="flaticon-youtube"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="https://www.facebook.com/nanaaudewilly/" target="_blank">
                         <i class="flaticon-facebook"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="https://www.facebook.com/nanaaudewilly/" target="_blank">
                         <i class="flaticon-twitter"></i>
                     </a>
                 </li>

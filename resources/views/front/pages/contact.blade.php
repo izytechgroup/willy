@@ -21,7 +21,7 @@
                         <div class="col-sm-4">
                             <ul class="list-unstyled fs-20">
                                 <li>
-                                    <i class="flaticon-mail-dark mr-10"></i> nanaaude@yahoo.fr
+                                    <i class="flaticon-mail-dark mr-10"></i> contact@willymixdj.com
                                 </li>
                                 <li>
                                     <i class="flaticon-phone mr-10"></i> 00324 8540 6858

@@ -2,28 +2,28 @@
     <div class="menu">
         <ul class="list-inline">
              <li>
-                 <a href="">
+                 <a href="/aide" target="_blank">
                      Aide
                  </a>
              </li>
 
              <li>
-                 <a href="">
+                <a href="/biomedical" target="_blank">
                      Biomédical
                  </a>
              </li>
 
              <li>
-                 <a href="">
+                <a href="/contact" target="_blank">
                      Contact
                  </a>
              </li>
 
-             <li>
-                 <a href="">
+             <!-- <li>
+                 <a href="/aide" target="_blank">
                      Conditions
                  </a>
-             </li>
+             </li> -->
         </ul>
     </div>
 </template>
