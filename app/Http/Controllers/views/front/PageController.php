@@ -26,6 +26,11 @@ class PageController extends Controller
         return view('front.pages.don', compact('p'));
     }
 
+    public function aide () {
+        $p = Page::where('slug', 'aide')->first();
+        return view('front.pages.aide', compact('p'));
+    }
+
     public function contact () {
         return view('front.pages.contact');
     }

@@ -34,6 +34,7 @@ Route::group(['prefix' => 'events'], function () {
 });
 
 Route::get('don', 'views\front\PageController@don');
+Route::get('aide', 'views\front\PageController@aide');
 Route::get('contact', 'views\front\PageController@contact');
 Route::get('academie', 'views\front\PageController@academie');
 Route::get('location', 'views\front\PageController@location');
