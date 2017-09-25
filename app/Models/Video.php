@@ -13,6 +13,10 @@ class Video extends Model
         return $q->orderBy('id', 'desc');
     }
 
+    public function scopeIsStatic($q) {
+        return $q->where('is_static', 'true');
+    }
+
     public function scopeLast($q) {
         return $q->orderBy('id', 'desc')->first();
     }

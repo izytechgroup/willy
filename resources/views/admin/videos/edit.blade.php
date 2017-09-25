@@ -115,8 +115,16 @@
                 </div>
 
             {!! Form::close() !!}
+
+            <div class="mt-20 pb-20">
+                <button class="btn btn-red" data-toggle="modal" data-target="#videoDeleteModal">
+                    Supprimer
+                </button>
+            </div>
+
         </div>
     </section>
+    @include('admin.modals.video-delete')
 @endsection
 
 

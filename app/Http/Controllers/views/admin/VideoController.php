@@ -210,4 +210,15 @@ class VideoController extends Controller
         curl_close($ch);
         return $output;
     }
+
+    /**
+     * [delete description]
+     * @param  [type] $number [description]
+     * @return [type]         [description]
+     */
+    public function delete($number)
+    {
+        Video::where('number', $number)->delete();
+        return redirect()->route('videos.index');
+    }
 }

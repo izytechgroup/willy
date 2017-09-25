@@ -14,7 +14,9 @@ class VideoController extends Controller
     {
         try
         {
-            $main = Video::canDisplay()->last();
+            $main = Video::canDisplay()
+            ->where('is_static', true)
+            ->last();
 
             $playlists = Playlist::has('videos')
             ->video()->orderBy('title')->get();

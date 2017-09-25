@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_auth', 'admin']], fun
     Route::post('password', 'views\admin\AuthController@password')->name('admin.password');
     Route::get('settings', 'views\admin\SettingController@show')->name('admin.settings');
     Route::post('settings', 'views\admin\SettingController@update')->name('admin.settings.update');
+    Route::get('videos/{number}/delete', 'views\admin\VideoController@delete')->name('admin.video.delete');
 
     Route::group(['prefix' => 'songs'], function () {
         Route::group(['prefix' => 'playlists'], function () {
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_auth', 'admin']], fun
             Route::post('{id}/songs', 'views\admin\SongController@store')->name('audio.playlist.song.add');
         });
     });
+
 
     Route::resource('users', 'views\admin\UserController');
     Route::resource('pages', 'views\admin\PageController');
