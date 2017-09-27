@@ -230,6 +230,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'LaravelMP3'=> Acekyd\LaravelMP3\LaravelMP3Facade::class,
+        'Helper'    => App\Helpers\Helper::class,
 
     ],
 

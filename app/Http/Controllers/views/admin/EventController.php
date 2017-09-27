@@ -54,9 +54,7 @@ class EventController extends Controller
     public function create()
     {
         $types = EventType::get();
-        $countries = [
-            'Allemagne', 'Belgique', 'Cameroun', 'Canada', 'Danmark', 'Espagne', 'France', 'Italie', 'Suisse'
-        ];
+        $countries = \Helper::getCountries();
 
         return view('admin.events.create', compact('types', 'countries'));
     }
@@ -123,9 +121,7 @@ class EventController extends Controller
             return redirect()->route('events.index');
 
         $types = EventType::get();
-        $countries = [
-            'Allemagne', 'Belgique', 'Cameroun', 'Canada', 'Danmark', 'Espagne', 'France', 'Italie', 'Suisse'
-        ];
+        $countries = \Helper::getCountries();
 
         return view('admin.events.edit', ['event' => $event, 'types' => $types, 'countries' => $countries]);
     }
