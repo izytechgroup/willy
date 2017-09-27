@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <input type="text" name="type"
-                                value="{{ Request::get('keywords') }}"
+                                value="{{ Request::get('type') }}"
                                 class="form-control input-lg input-white"
                                 placeholder="Type d'events">
                         </div>
