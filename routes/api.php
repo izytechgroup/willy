@@ -34,5 +34,6 @@ Route::group(['prefix' => 'front'], function () {
 Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::put('songs', 'api\SongController@update');
+        Route::delete('songs/{id}', 'api\SongController@delete');
     });
 });

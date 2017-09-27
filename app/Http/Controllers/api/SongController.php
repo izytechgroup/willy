@@ -131,4 +131,27 @@ class SongController extends Controller
         }
 
     }
+
+
+    /**
+     * [delete description]
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function delete($id)
+    {
+        try
+        {
+            $song = Song::find($id);
+            if (!$song) {
+                return response()->json('No song found', self::HTTP_BADREQUEST);
+            }
+            $song->delete();
+            return response()->json('Song deleted');
+        }
+        catch (Exception $e) {
+            return response()->json($e->getMessage(), self::HTTP_ERROR);
+        }
+    }
+
 }

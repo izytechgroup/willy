@@ -6,6 +6,8 @@
  */
 
 require('./bootstrap');
+import toastr from './plugins/toastr'
+Vue.use(toastr)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
