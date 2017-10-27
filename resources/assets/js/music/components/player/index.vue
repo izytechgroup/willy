@@ -30,9 +30,11 @@
 
             <div class="progress">
                 <div class="current" :style="'width:' + current + '%'"></div>
+                <div class="loaded" :style="'width:' + loaded + '%'"></div>
                 <div class="infos">
                     <div class="title">{{ song.artist }} - {{ song.title }}</div>
-                    <div class="time">{{ elapsed | duration }} - {{ duration | duration }}</div>
+                    <div class="time" v-show="loading">Chargement en cours...</div>
+                    <div class="time" v-show="!loading">{{ elapsed | duration }} - {{ duration | duration }}</div>
                 </div>
             </div>
         </div>
@@ -92,6 +94,14 @@ export default {
 
         current () {
             return this.elapsed / this.duration * 100
+        },
+
+        loading () {
+            return this.$store.state.loading
+        },
+
+        loaded () {
+            return this.$store.state.loaded
         }
     },
 
@@ -124,10 +134,18 @@ export default {
         cursor: pointer;
         position: relative;
 
-        .current {
+        .loaded {
             position: absolute;
             background-color: rgba(0,0,0,0.12);
             height: 60px;
+            z-index: 7;
+        }
+
+        .current {
+            position: absolute;
+            background-color: rgba(255,0,0,0.66);
+            height: 60px;
+            z-index: 9;
         }
 
         .infos {

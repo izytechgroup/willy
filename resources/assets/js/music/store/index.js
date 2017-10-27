@@ -15,6 +15,8 @@ export default new Vuex.Store({
         },
         elapsed: 0,
         duration: 0,
+        loading: false,
+        loaded: 0,
         isMute: false,
         isPlaying: false,
         isLoadingSong: false,
@@ -117,6 +119,14 @@ export default new Vuex.Store({
         LOADING_PLAYLISTS (state) {
             state.isLoadingPlaylist != state.isLoadingPlaylist
         },
+
+        SET_LOADED (state, loaded) {
+            state.loaded = loaded
+        },
+
+        SET_LOADING_SONG(state, value) {
+            state.loading = value
+        }
     },
 
     actions: {
@@ -200,6 +210,11 @@ export default new Vuex.Store({
         setPlaylist ({ commit, state }, playlist) {
             commit('SET_PLAYLIST', playlist)
             commit('PLAY_SONG', playlist.songs[0])
+        },
+
+        trackDuration ({ commit }, d) {
+            let duration = Math.floor(d/1000)
+            commit('TRACK_DURATION', duration)
         }
     }
 })

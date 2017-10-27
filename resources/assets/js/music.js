@@ -9,7 +9,7 @@ import evento from './plugins/evento'
 Vue.use(evento)
 
 Vue.component('loader', require('./music/components/loader/loader'))
-Vue.component('equalizer', require('./music/components/player/equalizer'))
+Vue.component('player', require('./music/components/player/player'))
 Vue.component('willy-mix-player', require('./music/components/player/index'))
 
 const app = new Vue({

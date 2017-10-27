@@ -29,7 +29,7 @@
         </div>
         <!-- End of container  -->
 
-        <equalizer></equalizer>
+        <player></player>
         <willy-mix-player></willy-mix-player>
     </section>
 </template>
